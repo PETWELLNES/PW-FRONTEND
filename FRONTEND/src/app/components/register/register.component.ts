@@ -1,25 +1,50 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {AuthService} from "../../services/auth.service";
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [RouterLink, RouterOutlet, ReactiveFormsModule],
+  imports: [RouterLink, RouterOutlet, ReactiveFormsModule, CommonModule],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private apiService: AuthService) {
-    this.registerForm = this.fb.group({
-      username: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required]
-    });
+  constructor(
+    private fb: FormBuilder,
+    private apiService: AuthService,
+    private router: Router
+  ) {
+    this.registerForm = this.fb.group(
+      {
+        username: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', Validators.required],
+        confirmPassword: ['', Validators.required],
+      },
+      { validator: this.passwordMatchValidator }
+    );
+  }
+
+  passwordMatchValidator(
+    control: AbstractControl
+  ): { [key: string]: boolean } | null {
+    const password = control.get('password');
+    const confirmPassword = control.get('confirmPassword');
+    if (password?.value !== confirmPassword?.value) {
+      return { mismatch: true };
+    }
+    return null;
   }
 
   onSubmit(): void {
@@ -31,13 +56,27 @@ export class RegisterComponent {
       };
 
       this.apiService.registerUser(user).subscribe(
-        response => {
+        (response) => {
           console.log('User registered successfully', response);
+          this.router.navigate(['']);
         },
-        error => {
+        (error) => {
           console.error('Error registering user', error);
         }
       );
     }
+  }
+
+  isInvalid(controlName: string): boolean {
+    const control = this.registerForm.get(controlName);
+    if (
+      controlName === 'confirmPassword' &&
+      this.registerForm.errors?.['mismatch']
+    ) {
+      return control ? control.dirty || control.touched : false;
+    }
+    return control
+      ? control.invalid && (control.dirty || control.touched)
+      : false;
   }
 }
