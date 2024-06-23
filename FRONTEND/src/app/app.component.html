@@ -1,0 +1,96 @@
+<div class="main">
+    <app-navbar></app-navbar>
+    <div *ngIf="showMainContent">
+        <div class="banner">
+            <div class="estrella1" id="e1"></div>
+            <div class="estrella2" id="e2"></div>
+            <div class="pelota1" id="b1"></div>
+            <div class="pelota2" id="b2"></div>
+            <div class="pelota3" id="b3"></div>
+            <div class="calltoaction">
+                <h1>Tu Mascota <br /> Nuestro Compromiso</h1>
+                <h2>Juntos por la felicidad y salud de tus <br /> compañeros peludos</h2>
+                <a [routerLink]="['/register']" class="unetebtn">¡UNETE!</a>
+                <a [routerLink]="['/nosotros']" class="conocenosbtn"> ¡Conócenos!</a>
+            </div>
+            <div class="imagenbanner">
+                <img src="../assets/perrito.png" alt="perroinicio">
+            </div>
+        </div>
+
+        <div class="misionbanner">
+            <div class="textomision">
+                <h1>NUESTRA MISION</h1>
+                <h2>Brindar información y servicios de <br />
+                    confianza para que tu peludo amigo <br />
+                    este feliz y saludable</h2>
+            </div>
+        </div>
+
+        <div class="servicios">
+            <div class="estrella3" id="e3"></div>
+            <div class="estrella4" id="e4"></div>
+            <div class="pelota4" id="b4"></div>
+            <div class="pelota5" id="b5"></div>
+            <h1>SERVICIOS QUE BRINDAMOS</h1>
+            <div class="logoserv">
+                <img src="../assets/LOGO_PETWELLNES_R.png" alt="logoR">
+            </div>
+            <div class="servicioscontent">
+                <div class="serv1">
+                    <div class="comunidad">
+                        <i class="fa-solid fa-users" style="color: #000000;"></i>
+                        <h2>COMUNIDAD <br />
+                            INTERACTIVA</h2>
+                    </div>
+                    <div class="info">
+                        <i class="fa-regular fa-thumbs-up" style="color: #000000;"></i>
+                        <h2>INFORMACIÓN <br />
+                            FIABLE</h2>
+                    </div>
+                    <div class="vet">
+                        <i class="fa-solid fa-shield-dog" style="color: #000000;"></i>
+                        <h2>CONSULTAS <br />
+                            VETERINARIAS</h2>
+                    </div>
+                </div>
+                <div class="serv2">
+                    <div class="calidad">
+                        <i class="fa-solid fa-bowl-food" style="color: #000000;"></i>
+                        <h2>PRODUCTOS <br />
+                            DE CALIDAD</h2>
+                    </div>
+                    <div class="edu">
+                        <i class="fa-solid fa-book-open" style="color: #000000;"></i>
+                        <h2>CONTENIDO <br />
+                            EDUCATIVO</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ventajas">
+            <div class="ventajastexto">
+                <h1>VENTAJAS QUE OFRECEMOS</h1>
+                <div class="ventaja">
+                    <i class="fa-regular fa-circle-check" style="color: #000000;"></i>
+                    <h2>Bienestar para tu peludo amigo</h2>
+                </div>
+                <div class="ventaja">
+                    <i class="fa-regular fa-circle-check" style="color: #000000;"></i>
+                    <h2>Una comunidad de amigos de los <br />
+                        animales con los que interactuar</h2>
+                </div>
+                <div class="ventaja">
+                    <i class="fa-regular fa-circle-check" style="color: #000000;"></i>
+                    <h2>Información sanitaria en un solo lugar</h2>
+                </div>
+            </div>
+            <img src="../assets/mosaicoperros.png" alt="mosaicoperritos">
+        </div>
+    </div>
+    <div class="contenido">
+        <router-outlet></router-outlet>
+    </div>
+    <app-footer></app-footer>
+</div>

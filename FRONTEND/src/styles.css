@@ -1,0 +1,76 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+* {
+  font-family: "Nunito", sans-serif;
+  margin: 0;
+  text-decoration: none !important;
+  list-style: none !important;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.estrella1,
+.estrella2,
+.estrella3,
+.estrella4 {
+  width: 60px;
+  height: 60px;
+  background-color: #d03733;
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
+.pelota1,
+.pelota2,
+.pelota3,
+.pelota4,
+.pelota5 {
+  width: 15px;
+  height: 15px;
+  background-color: #00c4cc;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.contenido {
+  flex: 1;
+}
+
+.color-rojo {
+  color: #d03733;
+}
+
+.color-azul {
+  color: #00c4cc;
+}
+
+#red,
+#rojo {
+  color: #d03733;
+}
+
+#azul,
+#blue {
+  color: #00c4cc;
+}

@@ -1,0 +1,79 @@
+<div class="main">
+    <div class="broadcrumb">
+        <a [routerLink]="['']" class="broad">
+            <i class="fa-solid fa-house"></i>
+            <span>Inicio</span>
+        </a>
+        <span class="broadforo"> / Foro</span>
+    </div>
+    <div class="Titulo">Foro de Mascotas</div>
+    <div class="busqueda">
+        <div class="barra">
+            <i class="fa-solid fa-magnifying-glass" style="color: #000000;"></i>
+            <input type="text" placeholder="Buscar en los foros">
+        </div>
+        <button class="preguntar" [routerLink]="['/post']">Preguntar en el Foro</button>
+    </div>
+    <div class="forocontent">
+        <div class="categorias">
+            <ul class="tipomascota">
+                <li class="tipo">
+                    <a [routerLink]="['/perros']">
+                        <span class="icono p"></span>
+                        <p>Perros</p>
+                    </a>
+                </li>
+                <li class="tipo">
+                    <a [routerLink]="['/gatos']">
+                        <span class="icono g"></span>
+                        <p>Gatos</p>
+                    </a>
+                </li>
+                <li class="tipo">
+                    <a [routerLink]="['/peces']">
+                        <span class="icono pez"></span>
+                        <p>Peces</p>
+                    </a>
+                </li>
+                <li class="tipo">
+                    <a [routerLink]="['/roedores']">
+                        <span class="icono r"></span>
+                        <p>Roedores</p>
+                    </a>
+                </li>
+                <li class="tipo">
+                    <a [routerLink]="['/aves']">
+                        <span class="icono a"></span>
+                        <p>Aves</p>
+                    </a>
+                </li>
+                <li class="tipo">
+                    <a [routerLink]="['/reptiles']">
+                        <span class="icono rep"></span>
+                        <p>Réptiles</p>
+                    </a>
+                </li>
+                <li class="tipo">
+                    <a [routerLink]="['/otros']">
+                        <span class="icono o"></span>
+                        <p>Otros</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="foro">
+            <div class="cat">
+                <img src="../../../assets/dog.png" alt="">
+                <h1>Perro</h1>
+                <app-dropdown-menu></app-dropdown-menu>
+                <p>Ver todas las preguntas</p>
+            </div>
+            <div class="cat">
+                <img src="../../../assets/cat.png" alt="">
+                <h1>Gato</h1>
+                <app-dropdown-menu></app-dropdown-menu>
+                <p>Ver todas las preguntas</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+.broadforo {
+  color: #d03733;
+}
+
+.broad {
+  color: black;
+}
+
+.broad:hover,
+.broad i:hover {
+  color: #d03733;
+  transition: color 0.3s ease;
+}
+
+.broadcrumb {
+  margin-left: 25px;
+  margin-top: 15px;
+}
+
+.post-form {
+    max-width: 600px;
+    margin-left: 20%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+
+  h1{
+    margin-left: 25px;
+    margin-top: 15px;
+  }
+  
+  button {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    width: 100%;
+    padding: 10px;
+    background-color: #d03733;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #c9615e;
+  }

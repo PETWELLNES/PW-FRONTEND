@@ -1,0 +1,54 @@
+.register{
+    display: grid;
+    place-content: center;
+}
+
+.titulo{
+    display: grid;
+    grid-template-rows: 70%;
+    font-size: 35px;
+    margin-left: 100px;
+}
+
+.titulo img{
+    position: relative;
+    height: 150px;
+    width: 260px;
+    margin-top: 50px;
+    margin-left: 10%;
+}
+
+.form{
+    width: 600px;
+}
+
+h2{
+    font-size: 30px;
+}
+
+input{
+    width: 550px;
+    font-size: 20px;
+    margin-block: 10px;
+}
+
+.crear{
+    background-color: #D03733;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    width: 200px;
+    height: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 25%;
+    margin-top: 25px;
+}
+
+.crear:hover{
+    width: 210px;
+    height: 60px;
+    font-size: 35px;
+    transition: 0.2s;
+}

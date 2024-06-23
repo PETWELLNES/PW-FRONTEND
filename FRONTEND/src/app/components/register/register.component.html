@@ -1,0 +1,21 @@
+<div class="main">
+  <section class="register">
+    <div class="titulo">
+      <img src="../../../assets/LOGO_PETWELLNES_R.png" alt="">
+      <h1>Crear Cuenta</h1>
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form">
+        <h2>Username</h2>
+        <input type="text" formControlName="username" placeholder="">
+        <h2>Correo</h2>
+        <input type="email" formControlName="email" placeholder="">
+        <h2>Contraseña</h2>
+        <input type="password" formControlName="password" placeholder="">
+        <h2>Confirmar Contraseña</h2>
+        <input type="password" formControlName="confirmPassword" placeholder="">
+      </div>
+      <button class="crear" type="submit" [disabled]="registerForm.invalid">CREAR</button>
+    </form>
+  </section>
+</div>
