@@ -7,13 +7,30 @@
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <div class="form">
         <h2>Username</h2>
-        <input type="text" formControlName="username" placeholder="">
+        <div *ngIf="isInvalid('username')" class="error-message">
+          Debe haber un username
+        </div>
+        <input type="text" formControlName="username" placeholder="" [ngClass]="{'invalid': isInvalid('username')}">
+
         <h2>Correo</h2>
-        <input type="email" formControlName="email" placeholder="">
+        <div *ngIf="isInvalid('email')" class="error-message">
+          Debes colocar un correo en formato válido
+        </div>
+        <input type="email" formControlName="email" placeholder="" [ngClass]="{'invalid': isInvalid('email')}">
+
+
         <h2>Contraseña</h2>
-        <input type="password" formControlName="password" placeholder="">
+        <div *ngIf="isInvalid('password')" class="error-message">
+          Debes colocar una contraseña
+        </div>
+        <input type="password" formControlName="password" placeholder="" [ngClass]="{'invalid': isInvalid('password')}">
+
         <h2>Confirmar Contraseña</h2>
-        <input type="password" formControlName="confirmPassword" placeholder="">
+        <div *ngIf="isInvalid('confirmPassword')" class="error-message">
+          Las contraseñas no coinciden
+        </div>
+        <input type="password" formControlName="confirmPassword" placeholder=""
+          [ngClass]="{'invalid': isInvalid('confirmPassword')}">
       </div>
       <button class="crear" type="submit" [disabled]="registerForm.invalid">CREAR</button>
     </form>
