@@ -1,0 +1,31 @@
+<section class="perfil-usuario">
+    <div class="contenedor-perfil">
+      <div class="portada-perfil" style="background-image: url('../../../assets/defaultbanner.jpg');">
+        <div class="sombra"></div>
+        <div class="avatar-perfil">
+          <img src="../../../assets/federico.jpg" alt="img">
+          <a href="#" class="cambiar-foto">
+            <i class="fas fa-camera"></i> 
+            <span>Cambiar foto</span>
+          </a>
+        </div>
+        <div class="datos-perfil">
+          <h4 class="titulo-usuario">{{username}}</h4>
+          <p class="bio-usuario">Lorem ipsum dolor sit, amet consectetur adipisicing.</p>
+        </div>
+        <div class="opcciones-perfil">
+          <button type="">Cambiar portada</button>
+          <button type=""><i class="fas fa-wrench"></i></button>
+        </div>
+      </div>
+      <div class="menu-perfil">
+        <ul>
+          <li><a [routerLink]="['/user/posts']" title=""><i class="icono-perfil fas fa-bullhorn"></i> Publicaciones</a></li>
+          <li><a [routerLink]="['/user/info']" title=""><i class="icono-perfil fas fa-info-circle"></i> Información</a></li>
+        </ul>
+      </div>
+      <div class="perfil-usuario-info">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </section>

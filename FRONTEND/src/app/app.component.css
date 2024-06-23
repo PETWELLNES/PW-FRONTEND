@@ -1,0 +1,306 @@
+.unetebtn {
+  color: white;
+  background-color: #d03733;
+  border-radius: 20px;
+  padding-inline: 20px;
+  padding-block: 5px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.unetebtn:hover {
+  transform: 0.9s;
+  padding-inline: 25px;
+  padding-block: 10px;
+  font-size: 35px;
+  transition: 0.2s;
+}
+
+.conocenosbtn {
+  color: black;
+  border-bottom: 3px solid #d03733;
+  padding-inline: 20px;
+  padding-block: 5px;
+  font-size: 30px;
+  font-weight: bold;
+  margin-left: 50px;
+}
+
+.conocenosbtn:hover {
+  transform: 0.9s;
+  padding-inline: 25px;
+  padding-block: 10px;
+  font-size: 35px;
+  transition: 0.2s;
+}
+
+.banner {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.calltoaction {
+  padding-left: 250px;
+}
+
+.calltoaction h1 {
+  font-size: 50px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+}
+
+.calltoaction h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.imagenbanner {
+  z-index: 2;
+}
+
+.imagenbanner img {
+  margin-left: 150px;
+  z-index: 2;
+}
+
+.banner:before {
+  content: "";
+  position: absolute;
+  background-color: #d03733;
+  width: 30%;
+  height: 90%;
+
+  clip-path: polygon(35% 20%, 150% 10%, 75% 100%, 30% 90%);
+  z-index: 1;
+  right: 0;
+  margin-right: 400px;
+  top: 0;
+}
+
+.estrella1,
+.estrella2,
+.estrella3,
+.estrella4 {
+  width: 60px;
+  height: 60px;
+  background-color: #d03733;
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
+#e1 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+#e2 {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin-right: 50px;
+  margin-bottom: 20px;
+}
+
+#e3 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: 120%;
+  margin-left: 15%;
+}
+
+#e4 {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-top: 90%;
+  margin-right: 10%;
+}
+
+.pelota1,
+.pelota2,
+.pelota3,
+.pelota4,
+.pelota5 {
+  width: 15px;
+  height: 15px;
+  background-color: #00c4cc;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+#b1 {
+  position: absolute;
+  top: 0;
+  margin-left: 350px;
+  margin-top: 100px;
+}
+
+#b2 {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 5%;
+  margin-left: 10%;
+}
+
+#b3 {
+  position: absolute;
+  right: 0;
+  margin-right: 50%;
+  margin-top: -10%;
+}
+
+#b4 {
+  position: absolute;
+  top: 0;
+  margin-left: 25%;
+  margin-top: 90%;
+}
+
+#b5 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 25%;
+  margin-top: 120%;
+}
+
+.misionbanner {
+  background-image: url(../assets/gatobanner.png);
+  width: 100%;
+  height: 800px;
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  flex-direction: column;
+}
+
+.misionbanner h1,
+.misionbanner h2 {
+  display: flex;
+  color: white;
+  justify-content: center;
+  text-align: center;
+}
+
+.misionbanner h1 {
+  font-size: 70px;
+}
+
+.misionbanner h2 {
+  font-size: 50px;
+  font-weight: 500;
+}
+
+.textomision {
+  margin-top: 15%;
+  margin-right: 50%;
+}
+
+.servicios h1 {
+  text-align: center;
+  font-size: 50px;
+  margin-top: 10px;
+  font-weight: 700;
+}
+
+.logoserv {
+  display: flex;
+  justify-content: center;
+}
+
+.serv1,
+.serv2 {
+  display: flex;
+  justify-content: center;
+}
+
+.comunidad,
+.info,
+.vet,
+.calidad,
+.edu {
+  display: flex;
+  border-radius: 360px;
+  width: 250px;
+  height: 250px;
+  text-align: center;
+  align-items: center;
+  margin: 10px;
+  margin-inline: 25px;
+}
+
+.comunidad,
+.vet {
+  background-color: #f19b9b;
+}
+
+.info,
+.calidad,
+.edu {
+  background-color: #ffc9c9;
+}
+.comunidad i,
+.info i,
+.vet i,
+.calidad i,
+.edu i {
+  font-size: 50px;
+  padding-left: 10px;
+}
+
+.calidad h2,
+.edu h2 {
+  padding-left: 15px;
+}
+
+.ventaja {
+  display: flex;
+  align-items: center;
+  margin-block: 30px;
+}
+
+.ventajas h1 {
+  font-weight: 800;
+  margin-left: 30px;
+  margin-bottom: 60px;
+}
+
+.ventaja h2 {
+  font-size: 30px;
+  margin-left: 20px;
+}
+
+.ventaja i {
+  font-size: 45px;
+}
+
+.ventajas {
+  display: flex;
+  justify-content: center;
+  margin-block: 100px;
+}
+
+.ventajas img {
+  width: 400px;
+  height: 400px;
+  margin-left: 150px;
+}

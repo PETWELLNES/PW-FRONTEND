@@ -1,0 +1,58 @@
+nav{
+    border-bottom: 5px solid #D03733;
+}
+
+.navbar{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.logonav{
+    width: 170px;
+    height: 100px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+.nav-menu{
+    display: flex;
+    font-size: 25px;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.fa-circle-arrow-down{
+    color: black !important;
+}
+
+li{
+    cursor: pointer;
+}
+
+li a{
+    color: black;
+    margin-inline: 10px;
+    font-weight: bold;
+}
+
+li a:hover{
+    background-color: #D03733;
+    border-radius: 20px;
+    color: white;
+    padding: 5px;
+    padding-inline: 10px;
+    transition: 0.3s;
+}
+
+i {
+    font-size: 35px;
+    color: black;
+    margin-right: 10px;
+    width: 100%;
+    cursor: pointer;
+}
+
+i:hover{
+    color: #D03733;
+}

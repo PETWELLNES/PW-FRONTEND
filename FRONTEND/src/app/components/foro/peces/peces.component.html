@@ -1,0 +1,40 @@
+<div class="main">
+    <div class="broadcrumb">
+        <a [routerLink]="['']" class="broad">
+            <i class="fa-solid fa-house"></i>
+            <span>Inicio</span>
+        </a>
+        <a [routerLink]="['/foro']" class="broad">
+            <span> / Foro</span>
+        </a>
+        <span class="broadforo"> / Peces</span>
+    </div>
+    <div class="Titulo">Foro de Mascotas</div>
+    <div class="busqueda">
+        <div class="barra">
+            <i class="fa-solid fa-magnifying-glass" style="color: #000000;"></i>
+            <input type="text" placeholder="Buscar en los foros">
+        </div>
+        <button class="preguntar" [routerLink]="['/post']">Preguntar en el Foro</button>
+    </div>
+    <div class="lista-categorias">
+        <ul class="categorias">
+            <li>Todos</li>
+            <li>General</li>
+            <li>Comportamiento</li>
+            <li>Alimentacion</li>
+            <li>Salud</li>
+            <li>Moda</li>
+        </ul>
+    </div>
+    <div class="forocontent">
+        <div class="foro">
+            <div class="cat">
+                <img src="../../../assets/fish.png" alt="">
+                <h1>Peces</h1>
+                <div class="drop">
+                    <app-dropdown-menu></app-dropdown-menu></div>
+            </div>
+        </div>
+    </div>
+</div>

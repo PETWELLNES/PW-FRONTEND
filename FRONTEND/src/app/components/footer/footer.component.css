@@ -1,0 +1,85 @@
+footer{
+    background-color: black;
+    color: white;
+    display: grid;
+    grid-template-rows: 80% 20%;
+    width: 100%;
+}
+
+div.footercontent{
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    align-content: center;
+}
+
+div.logos i{
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+}
+
+div.logos i:hover{
+    color: #D03733;
+}
+
+div.logos{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    place-items: center;
+    margin-left: 60px;
+}
+
+div.contactanos{
+    display: grid;
+    place-items: center;
+    justify-content: center;
+}
+
+div.contactanos h2{
+    font-size: 25px;
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+.contactanos p{
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+div.contacto-item{
+    display: grid;
+    grid-template-columns: 15% 85%;
+    margin-top: 10px;
+}
+
+div.contacto-item i{
+    font-size: 25px;
+}
+
+div.contactanoslogos{
+    display: grid;
+    place-content: center;
+    margin-right: 10px;
+}
+
+div.lema{
+    display: grid;
+    place-items: center;
+    justify-content: center;
+}
+
+div.lema h1{
+    font-size: 25px;
+    font-weight: 200;
+}
+
+div.copycontent{
+    display: grid;
+    place-items: center;
+    justify-content: center;
+}
+
+div.copyright{
+    font-size: 12px;
+    font-weight: 100;
+}
