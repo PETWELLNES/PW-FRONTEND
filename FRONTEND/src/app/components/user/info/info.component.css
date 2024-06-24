@@ -1,16 +1,46 @@
+.body{
+    display: grid;
+    justify-items: center;
+}
+
+.info{
+  display: grid;
+  justify-items: center;
+}
+
 .perfil-usuario-info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 1.5rem 2rem;
     width: 100%;
     font-size: 1.25rem;
 }
+
 .perfil-usuario-info li{
     padding-block: 0.5rem;
 }
 
-.lista-datos i{
-    width: 20px;
-    margin-right: 10px;
+li{
+    display: flex;
+    justify-content: space-between;
+}
+
+.lista-datos i {
+  width: 20px;
+  margin-right: 10px;
+}
+
+button{
+    width: 200px;
+    font-size: 1.25rem;
+    padding-block: 5px;
+    padding-inline: 15px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    background-color: #D03733;
+}
+
+button:hover{
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: 0.3s;
 }

@@ -18,26 +18,32 @@ import { PostsComponent } from './components/user/posts/posts.component';
 import { PostComponent } from './components/foro/post/post.component';
 import { GruposComponent } from './components/user/grupos/grupos.component';
 import { CreargrupoComponent } from './components/user/grupos/creargrupo/creargrupo.component';
+import { EditInfoComponent } from './components/user/edit-info/edit-info.component';
 
 export const routes: Routes = [
-    { path: 'component', component: AppComponent},
-    { path: 'login', component: LoginComponent},
-    { path: 'register', component: RegisterComponent},
-    { path: 'foro', component: ForoComponent},
-    { path: 'post', component: PostComponent},
-    { path: 'grupos', component: GruposComponent},
-    { path: 'nuevo-grupo', component: CreargrupoComponent},
-    { path: 'forgot', component: ForgotComponent},
-    { path: 'perros', component: PerrosComponent},
-    { path: 'gatos', component: GatosComponent},
-    { path: 'peces', component: PecesComponent},
-    { path: 'roedores', component: RoedoresComponent},
-    { path: 'reptiles', component: ReptilesComponent},
-    { path: 'aves', component: AvesComponent},
-    { path: 'otros', component: OtrosComponent},
-    { path: 'nosotros', component: NosotrosComponent},
-    { path: 'user', component: UserComponent, children: [
-        { path: 'info', component: InfoComponent },
-        { path: 'posts', component: PostsComponent }
-      ]},
+  { path: '', component: AppComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'foro', component: ForoComponent },
+  { path: 'post', component: PostComponent },
+  { path: 'grupos', component: GruposComponent },
+  { path: 'nuevo-grupo', component: CreargrupoComponent },
+  { path: 'forgot', component: ForgotComponent },
+  { path: 'perros', component: PerrosComponent },
+  { path: 'gatos', component: GatosComponent },
+  { path: 'peces', component: PecesComponent },
+  { path: 'roedores', component: RoedoresComponent },
+  { path: 'reptiles', component: ReptilesComponent },
+  { path: 'aves', component: AvesComponent },
+  { path: 'otros', component: OtrosComponent },
+  { path: 'nosotros', component: NosotrosComponent },
+  {
+    path: 'user',
+    component: UserComponent,
+    children: [
+      { path: 'info', component: InfoComponent },
+      { path: 'posts', component: PostsComponent },
+    ],
+  },
+  { path: 'editInfo', component: EditInfoComponent },
 ];

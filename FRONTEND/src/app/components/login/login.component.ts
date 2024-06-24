@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
@@ -18,18 +18,23 @@ export class LoginComponent {
 
   constructor(
     private authService: AuthService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.isLoggedIn = this.authService.isAuthenticated();
+    if (this.isLoggedIn) {
+      this.username = localStorage.getItem('username') || '';
+    }
   }
 
   login() {
-    this.authService.login(this.username, this.password).subscribe(isLoggedIn => {
+    this.authService.login(this.username, this.password).subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
-      this.cdr.detectChanges();
       if (isLoggedIn) {
+        localStorage.setItem('username', this.username);
+        this.cdr.detectChanges();
         console.log('Usuario conectado');
       } else {
         console.log('Credenciales incorrectas');
@@ -40,7 +45,9 @@ export class LoginComponent {
   logout() {
     this.authService.logout();
     this.isLoggedIn = false;
+    localStorage.removeItem('username');
     this.cdr.detectChanges();
     console.log('Usuario desconectado');
+    this.router.navigate(['']);
   }
 }

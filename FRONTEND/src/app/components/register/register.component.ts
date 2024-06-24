@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 
@@ -15,7 +9,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [RouterLink, RouterOutlet, ReactiveFormsModule, CommonModule],
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css'],
+  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
   registerForm: FormGroup;
@@ -36,9 +30,7 @@ export class RegisterComponent {
     );
   }
 
-  passwordMatchValidator(
-    control: AbstractControl
-  ): { [key: string]: boolean } | null {
+  passwordMatchValidator(control: AbstractControl): { [key: string]: boolean } | null {
     const password = control.get('password');
     const confirmPassword = control.get('confirmPassword');
     if (password?.value !== confirmPassword?.value) {
@@ -56,14 +48,26 @@ export class RegisterComponent {
       };
 
       this.apiService.registerUser(user).subscribe(
-        (response) => {
-          console.log('User registered successfully', response);
-          this.router.navigate(['']);
+        response => {
+          if (response && response.userId) {
+            console.log('User registered successfully', response);
+            try {
+              this.router.navigate(['']).then(() => {
+              }).catch((err) => {
+              });
+            } catch (err) {
+              console.error('Caught navigation error:', err);
+            }
+          } else {
+            console.log('No userId in response');
+          }
         },
-        (error) => {
+        error => {
           console.error('Error registering user', error);
         }
       );
+    } else {
+      console.log('Form is invalid');
     }
   }
 
@@ -75,8 +79,6 @@ export class RegisterComponent {
     ) {
       return control ? control.dirty || control.touched : false;
     }
-    return control
-      ? control.invalid && (control.dirty || control.touched)
-      : false;
+    return control ? control.invalid && (control.dirty || control.touched) : false;
   }
 }

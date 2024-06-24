@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -8,6 +8,26 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent {
-  username ='BMarin2003';
+export class UserComponent implements OnInit {
+  username: string = '';
+  activeMenu: string = '';
+
+  ngOnInit() {
+    this.username = localStorage.getItem('username') || '';
+    this.activeMenu = this.getActiveMenuFromUrl();
+  }
+
+  setActiveMenu(menu: string) {
+    this.activeMenu = menu;
+  }
+
+  getActiveMenuFromUrl(): string {
+    const currentUrl = window.location.pathname;
+    if (currentUrl.includes('posts')) {
+      return 'posts';
+    } else if (currentUrl.includes('info')) {
+      return 'info';
+    }
+    return '';
+  }
 }
