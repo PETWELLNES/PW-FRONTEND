@@ -17,6 +17,11 @@
   justify-items: center;
 }
 
+form{
+    display: grid;
+    justify-items: center;
+}
+
 .editInfo {
   display: grid;
   justify-items: center;
@@ -61,6 +66,7 @@ button {
   border-radius: 20px;
   color: white;
   background-color: #d03733;
+  margin-bottom: 50px;
 }
 
 button:hover {

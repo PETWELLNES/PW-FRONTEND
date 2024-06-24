@@ -31,18 +31,26 @@ export class InfoComponent implements OnInit {
 
     this.authService.getUserDetails(userId).subscribe(
       user => {
-        this.name = user.name;
-        this.lastname = user.lastname;
-        this.email = user.email;
-        this.phonenumber = user.phone;
-        this.work = user.work;
-        this.birthday = new Date(user.birthday).toISOString().split('T')[0];
-        this.country = user.country;
-        this.registerdate = new Date(user.registerday).toLocaleDateString();
+        this.name = user.name || '';
+        this.lastname = user.lastname || '';
+        this.email = user.email || '';
+        this.phonenumber = user.phone || '';
+        this.work = user.work || '';
+        this.country = user.country || '';
+        this.birthday = this.formatDate(user.birthday);
+        this.registerdate = this.formatDate(user.registerday);
       },
       error => {
         console.error('Error fetching user details', error);
       }
     );
+  }
+
+  formatDate(date: string): string {
+    if (!date) {
+      return '';
+    }
+    const formattedDate = new Date(date).toISOString().split('T')[0];
+    return formattedDate === '1970-01-01' ? '' : formattedDate;
   }
 }

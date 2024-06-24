@@ -4,6 +4,7 @@ import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validator
 import { AuthService } from '../../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { User } from '../../../models/user';
+import { CountryService } from '../../../services/country.service';
 
 @Component({
   selector: 'app-edit-info',
@@ -15,10 +16,13 @@ import { User } from '../../../models/user';
 export class EditInfoComponent implements OnInit {
   editForm: FormGroup;
   userId: number = 0;
+  countries: string[] = [];
+  filteredCountries: string[] = [];
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
+    private countryService: CountryService,
     private router: Router
   ) {
     this.editForm = this.fb.group({
@@ -57,6 +61,18 @@ export class EditInfoComponent implements OnInit {
       error => {
         console.error('Error fetching user details', error);
       }
+    );
+
+    this.countryService.getCountries().subscribe(countries => {
+      this.countries = countries;
+      this.filteredCountries = countries;
+    });
+  }
+
+  onCountryInput(event: any): void {
+    const query = event.target.value.toLowerCase();
+    this.filteredCountries = this.countries.filter(country =>
+      country.toLowerCase().includes(query)
     );
   }
 
