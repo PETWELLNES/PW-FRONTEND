@@ -17,7 +17,6 @@ export class EditInfoComponent implements OnInit {
   editForm: FormGroup;
   userId: number = 0;
   countries: string[] = [];
-  filteredCountries: string[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -33,7 +32,7 @@ export class EditInfoComponent implements OnInit {
       phone: [''],
       work: [''],
       birthday: [''],
-      country: ['']
+      country: ['', Validators.required]
     });
   }
 
@@ -63,16 +62,13 @@ export class EditInfoComponent implements OnInit {
       }
     );
 
-    this.countryService.getCountries().subscribe(countries => {
-      this.countries = countries;
-      this.filteredCountries = countries;
-    });
-  }
-
-  onCountryInput(event: any): void {
-    const query = event.target.value.toLowerCase();
-    this.filteredCountries = this.countries.filter(country =>
-      country.toLowerCase().includes(query)
+    this.countryService.getCountries().subscribe(
+      countries => {
+        this.countries = countries;
+      },
+      error => {
+        console.error('Error fetching countries', error);
+      }
     );
   }
 
@@ -86,7 +82,7 @@ export class EditInfoComponent implements OnInit {
       this.authService.updateUserDetails(this.userId, updatedUser).subscribe(
         response => {
           console.log('User updated successfully', response);
-          this.router.navigate(['/user/info']);
+          this.router.navigate(['/perfil/info']);
         },
         error => {
           console.error('Error updating user', error);

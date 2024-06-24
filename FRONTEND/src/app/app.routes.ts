@@ -38,7 +38,7 @@ export const routes: Routes = [
   { path: 'otros', component: OtrosComponent },
   { path: 'nosotros', component: NosotrosComponent },
   {
-    path: 'user',
+    path: 'perfil',
     component: UserComponent,
     children: [
       { path: 'info', component: InfoComponent },

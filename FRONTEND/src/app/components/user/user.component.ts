@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-user',
@@ -12,8 +13,12 @@ export class UserComponent implements OnInit {
   username: string = '';
   activeMenu: string = '';
 
+  constructor(private authService: AuthService) {}
+
   ngOnInit() {
-    this.username = localStorage.getItem('username') || '';
+    this.authService.getUsername().subscribe(username => {
+      this.username = username;
+    });
     this.activeMenu = this.getActiveMenuFromUrl();
   }
 

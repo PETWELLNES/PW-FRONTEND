@@ -9,15 +9,18 @@
                 <ul class="lista-datos">
                     <li>
                         <div><i class="fa-solid fa-user-tag" style="color: #000000;"></i> Username:</div>
-                        <input type="text" formControlName="username" placeholder="Username" [ngClass]="{'invalid': isInvalid('username')}">
+                        <input type="text" formControlName="username" placeholder="Username"
+                            [ngClass]="{'invalid': isInvalid('username')}">
                         <div *ngIf="isInvalid('username')" class="error-message">Debe haber un username</div>
                     </li>
 
                     <li>
                         <div><i class="fa-solid fa-address-card" style="color: #000000;"></i> Nombres: </div>
                         <div class="nombres">
-                            <input type="text" formControlName="name" placeholder="Nombre" [ngClass]="{'invalid': isInvalid('name')}">
-                            <input class="apellido" type="text" formControlName="lastname" placeholder="Apellido" [ngClass]="{'invalid': isInvalid('lastname')}">
+                            <input type="text" formControlName="name" placeholder="Nombre"
+                                [ngClass]="{'invalid': isInvalid('name')}">
+                            <input class="apellido" type="text" formControlName="lastname" placeholder="Apellido"
+                                [ngClass]="{'invalid': isInvalid('lastname')}">
                             <div *ngIf="isInvalid('name')" class="error-message">Debe haber un nombre</div>
                             <div *ngIf="isInvalid('lastname')" class="error-message">Debe haber un apellido</div>
                         </div>
@@ -25,7 +28,8 @@
 
                     <li>
                         <div><i class="fa-solid fa-envelope" style="color: #000000;"></i> Correo: </div>
-                        <input type="email" formControlName="email" placeholder="Correo" [ngClass]="{'invalid': isInvalid('email')}">
+                        <input type="email" formControlName="email" placeholder="Correo"
+                            [ngClass]="{'invalid': isInvalid('email')}">
                         <div *ngIf="isInvalid('email')" class="error-message">Debes colocar un correo válido</div>
                     </li>
 
@@ -46,12 +50,9 @@
 
                     <li>
                         <div><i class="fa-solid fa-flag" style="color: #000000;"></i> País: </div>
-                        <input type="text" formControlName="country" placeholder="País" (input)="onCountryInput($event)">
-                        <div *ngIf="filteredCountries.length > 0">
-                            <ul>
-                                <li *ngFor="let country of filteredCountries" (click)="editForm.controls['country'].setValue(country)">{{country}}</li>
-                            </ul>
-                        </div>
+                        <select formControlName="country">
+                            <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+                        </select>
                     </li>
                 </ul>
             </div>

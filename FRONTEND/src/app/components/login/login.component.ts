@@ -23,10 +23,10 @@ export class LoginComponent {
   ) {}
 
   ngOnInit() {
-    this.isLoggedIn = this.authService.isAuthenticated();
-    if (this.isLoggedIn) {
-      this.username = localStorage.getItem('username') || '';
-    }
+    this.authService.getUsername().subscribe(username => {
+      this.username = username;
+      this.isLoggedIn = !!username;
+    });
   }
 
   login() {
