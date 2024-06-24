@@ -9,30 +9,32 @@ import { AuthService } from '../../services/auth.service';
   standalone: true,
   imports: [RouterLink, RouterOutlet, FormsModule, CommonModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  username = 'BMarin2003';
+  username = '';
   password = '';
-  isLoggedIn = true;
+  isLoggedIn = false;
 
   constructor(
     private authService: AuthService,
     private cdr: ChangeDetectorRef
   ) {}
 
+  ngOnInit() {
+    this.isLoggedIn = this.authService.isAuthenticated();
+  }
+
   login() {
-    this.authService
-      .login(this.username, this.password)
-      .subscribe((isLoggedIn) => {
-        this.isLoggedIn = isLoggedIn;
-        this.cdr.detectChanges();
-        if (isLoggedIn) {
-          console.log('Usuario conectado');
-        } else {
-          console.log('Credenciales incorrectas');
-        }
-      });
+    this.authService.login(this.username, this.password).subscribe(isLoggedIn => {
+      this.isLoggedIn = isLoggedIn;
+      this.cdr.detectChanges();
+      if (isLoggedIn) {
+        console.log('Usuario conectado');
+      } else {
+        console.log('Credenciales incorrectas');
+      }
+    });
   }
 
   logout() {

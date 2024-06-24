@@ -10,10 +10,13 @@ export class AuthService {
   private isLoggedIn = false;
   private apiUrl = 'http://localhost:8080/api/v1';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    const token = localStorage.getItem('token');
+    this.isLoggedIn = !!token;
+  }
 
   login(username: string, password: string): Observable<boolean> {
-    return this.http.post<{token: string}>(`${this.apiUrl}/user/login`, { username, password }).pipe(
+    return this.http.post<{ token: string }>(`${this.apiUrl}/user/login`, { username, password }).pipe(
       tap(response => {
         if (response.token) {
           this.isLoggedIn = true;
