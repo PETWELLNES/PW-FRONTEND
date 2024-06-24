@@ -30,7 +30,7 @@
     justify-content: center;
 }
 
-.login a{
+.login button{
     font-family: "League Spartan", sans-serif;
     background-color: #D03733;
     color: white;
@@ -42,6 +42,11 @@
     cursor: pointer;
     text-align: center;
     font-weight: bold;
+}
+
+.login button:hover, .register a:hover{
+    font-size: 36px;
+    transition: 0.3s;
 }
 
 .register a{
@@ -58,14 +63,19 @@
     font-weight: bold;
 }
 
-div.forgotpsw{
+.forgotpsw{
     margin: 10px;
 }
 
-div.forgotpsw a{
+.forgotpsw a{
     color: black;
     font-size: 15px;
     cursor: pointer;
+}
+
+.forgotpsw a:hover{
+    color: #D03733;
+    transition: 0.3s;
 }
 
 .user{

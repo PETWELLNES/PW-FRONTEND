@@ -1,37 +1,36 @@
-@if (isLoggedIn) {
+<div *ngIf="isLoggedIn; else loginForm">
     <div class="user">
         <div class="imagen">
             <img src="../../../assets/federico.jpg" alt=""></div>
-        <p [routerLink]="['/user']">{{username}}</p>
+        <p [routerLink]="['/perfil/posts']">{{username}}</p>
     </div>
     <h2 [routerLink]="['/grupos']">Grupos</h2>
     <h3 (click)="logout()">Cerrar Sesión</h3>
-
-} @else {
-
-<div class="form-login">
-    <form>
-        <div class="llenar">
-            <div class="formemail">
-                <h1>Usuario</h1>
-                <input type="email" placeholder="">
-            </div>
-            <div class="formpassw">
-                <h1>Contraseña</h1>
-                <input type="password" placeholder="">
-            </div>
-        </div>
-        <div class="buttonmenulogin">
-            <div class="login">
-                <a (click)="login()" class="login"><span class="unetenostexto">Iniciar Sesión</span></a>
-            </div>
-            <div class="register">
-                <a [routerLink]="['/register']" class="register"><span class="unetenostexto">Regístrate</span></a>
-            </div>
-            <div class="forgotpsw">
-                <a [routerLink]="['/forgot']">¿Olvidaste tu contraseña?</a>
-            </div>
-        </div>
-    </form>
 </div>
-}
+<ng-template #loginForm>
+    <div class="form-login">
+        <form (ngSubmit)="login()">
+            <div class="llenar">
+                <div class="formemail">
+                    <h1>Usuario</h1>
+                    <input type="email" placeholder="" [(ngModel)]="username" name="username" required>
+                </div>
+                <div class="formpassw">
+                    <h1>Contraseña</h1>
+                    <input type="password" placeholder="" [(ngModel)]="password" name="password" required>
+                </div>
+            </div>
+            <div class="buttonmenulogin">
+                <div class="login">
+                    <button type="submit" class="login"><span class="unetenostexto">Iniciar Sesión</span></button>
+                </div>
+                <div class="register">
+                    <a [routerLink]="['/register']" class="register"><span class="unetenostexto">Regístrate</span></a>
+                </div>
+                <div class="forgotpsw">
+                    <a [routerLink]="['/forgot']">¿Olvidaste tu contraseña?</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</ng-template>

@@ -1,0 +1,62 @@
+<div class="body">
+    <section class="editInfo">
+        <div class="titulo">
+            <img src="../../../assets/LOGO_PETWELLNES_R.png" alt="">
+            <h1>Editar Información</h1>
+        </div>
+        <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+            <div class="perfil-usuario-info">
+                <ul class="lista-datos">
+                    <li>
+                        <div><i class="fa-solid fa-user-tag" style="color: #000000;"></i> Username:</div>
+                        <input type="text" formControlName="username" placeholder="Username"
+                            [ngClass]="{'invalid': isInvalid('username')}">
+                        <div *ngIf="isInvalid('username')" class="error-message">Debe haber un username</div>
+                    </li>
+
+                    <li>
+                        <div><i class="fa-solid fa-address-card" style="color: #000000;"></i> Nombres: </div>
+                        <div class="nombres">
+                            <input type="text" formControlName="name" placeholder="Nombre"
+                                [ngClass]="{'invalid': isInvalid('name')}">
+                            <input class="apellido" type="text" formControlName="lastname" placeholder="Apellido"
+                                [ngClass]="{'invalid': isInvalid('lastname')}">
+                            <div *ngIf="isInvalid('name')" class="error-message">Debe haber un nombre</div>
+                            <div *ngIf="isInvalid('lastname')" class="error-message">Debe haber un apellido</div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div><i class="fa-solid fa-envelope" style="color: #000000;"></i> Correo: </div>
+                        <input type="email" formControlName="email" placeholder="Correo"
+                            [ngClass]="{'invalid': isInvalid('email')}">
+                        <div *ngIf="isInvalid('email')" class="error-message">Debes colocar un correo válido</div>
+                    </li>
+
+                    <li>
+                        <div><i class="icono fas fa-phone-alt"></i> Teléfono: </div>
+                        <input type="text" formControlName="phone" placeholder="Teléfono">
+                    </li>
+
+                    <li>
+                        <div><i class="icono fas fa-briefcase"></i> Trabajo: </div>
+                        <input type="text" formControlName="work" placeholder="Trabajo">
+                    </li>
+
+                    <li>
+                        <div><i class="icono fas fa-calendar-alt"></i> Fecha nacimiento: </div>
+                        <input type="date" formControlName="birthday" placeholder="Fecha de nacimiento">
+                    </li>
+
+                    <li>
+                        <div><i class="fa-solid fa-flag" style="color: #000000;"></i> País: </div>
+                        <select formControlName="country">
+                            <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+                        </select>
+                    </li>
+                </ul>
+            </div>
+            <button class="crear" type="submit" [disabled]="editForm.invalid">Confirmar</button>
+        </form>
+    </section>
+</div>
