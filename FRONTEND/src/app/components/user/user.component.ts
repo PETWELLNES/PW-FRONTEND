@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { User } from '../../models/user';
+import { User, getDefaultUser } from '../../models/user';
 import { CommonModule } from '@angular/common';
+import { ProfileService } from '../../services/profile.service';
 
 @Component({
   selector: 'app-user',
@@ -14,10 +15,14 @@ import { CommonModule } from '@angular/common';
 export class UserComponent implements OnInit {
   username: string = '';
   activeMenu: string = '';
-  user: User | null = null;
+  user: User = getDefaultUser();
   @ViewChild('fileInput') fileInput!: ElementRef;
+  @ViewChild('bannerFileInput') bannerFileInput!: ElementRef;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private profileService: ProfileService
+  ) {}
 
   ngOnInit() {
     this.authService.getUsername().subscribe((username) => {
@@ -26,7 +31,7 @@ export class UserComponent implements OnInit {
     });
 
     this.authService.getUser().subscribe((user) => {
-      this.user = user;
+      this.user = user || getDefaultUser();
       console.log('User loaded:', this.user);
     });
 
@@ -51,6 +56,10 @@ export class UserComponent implements OnInit {
     this.fileInput.nativeElement.click();
   }
 
+  triggerBannerFileInput() {
+    this.bannerFileInput.nativeElement.click();
+  }
+
   onFileSelected(event: Event) {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
@@ -63,21 +72,33 @@ export class UserComponent implements OnInit {
     }
   }
 
+  onBannerFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+      if (file.type.startsWith('image/')) {
+        this.uploadBannerImage(file);
+      } else {
+        alert('Please select an image file.');
+      }
+    }
+  }
+
   uploadProfileImage(file: File) {
     if (!this.user || !this.user.userId) {
-      console.error("User ID is not available");
+      console.error('User ID is not available');
       return;
     }
 
-    console.log("User ID:", this.user.userId);
+    console.log('User ID:', this.user.userId);
 
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('userId', this.user.userId.toString());
+    formData.append('userId', this.user.userId);
 
     const uploadUrl = 'http://localhost:8080/api/v1/user/upload-profile-image';
 
-    this.authService.uploadFile(uploadUrl, formData).subscribe(
+    this.profileService.uploadFile(uploadUrl, formData).subscribe(
       (response: any) => {
         if (response && response.imageUrl) {
           if (this.user) {
@@ -88,7 +109,43 @@ export class UserComponent implements OnInit {
       (error) => {
         console.error('Error uploading file', error);
         if (error.status === 413) {
-          alert('The file is too large to upload. Please select a smaller file.');
+          alert(
+            'The file is too large to upload. Please select a smaller file.'
+          );
+        }
+      }
+    );
+  }
+
+  uploadBannerImage(file: File) {
+    if (!this.user || !this.user.userId) {
+      console.error('User ID is not available');
+      return;
+    }
+
+    console.log('User ID:', this.user.userId);
+
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('userId', this.user.userId);
+
+    const uploadUrl = 'http://localhost:8080/api/v1/user/upload-banner-image';
+
+    this.profileService.uploadFile(uploadUrl, formData).subscribe(
+      (response: any) => {
+        if (response && response.imageUrl) {
+          if (this.user) {
+            this.user.bannerUrl = response.imageUrl;
+            console.log('Banner URL updated:', this.user.bannerUrl);
+          }
+        }
+      },
+      (error) => {
+        console.error('Error uploading file', error);
+        if (error.status === 413) {
+          alert(
+            'The file is too large to upload. Please select a smaller file.'
+          );
         }
       }
     );
