@@ -1,13 +1,14 @@
 <section class="perfil-usuario">
   <div class="contenedor-perfil">
-    <div class="portada-perfil" style="background-image: url('../../../assets/defaultbanner.jpg');">
+    <div class="portada-perfil" [ngStyle]="{'background-image': 'url(' + (user?.bannerUrl || '../../../assets/defaultbanner.jpg') + ')'}">
       <div class="sombra"></div>
       <div class="avatar-perfil">
-        <img src="../../../assets/federico.jpg" alt="img">
-        <a href="#" class="cambiar-foto">
+        <img [src]="'http://localhost:8080' + (user?.profileImageUrl || '../../../assets/federico.jpg')" alt="img">
+        <a class="cambiar-foto" (click)="triggerFileInput()">
           <i class="fas fa-camera"></i>
           <span>Cambiar foto</span>
         </a>
+        <input type="file" #fileInput accept="image/*" style="display: none;" (change)="onFileSelected($event)">
       </div>
       <div class="datos-perfil">
         <h4 class="titulo-usuario">{{username}}</h4>
@@ -18,10 +19,10 @@
     </div>
     <div class="menu-perfil">
       <ul>
-          <li><a [routerLink]="['/perfil/posts']" [class.active]="activeMenu === 'posts'" (click)="setActiveMenu('posts')"><i class="icono-perfil fas fa-bullhorn"></i> Publicaciones</a></li>
-          <li><a [routerLink]="['/perfil/info']" [class.active]="activeMenu === 'info'" (click)="setActiveMenu('info')"><i class="icono-perfil fas fa-info-circle"></i> Información</a></li>
+        <li><a [routerLink]="['/perfil/posts']" [class.active]="activeMenu === 'posts'" (click)="setActiveMenu('posts')"><i class="icono-perfil fas fa-bullhorn"></i> Publicaciones</a></li>
+        <li><a [routerLink]="['/perfil/info']" [class.active]="activeMenu === 'info'" (click)="setActiveMenu('info')"><i class="icono-perfil fas fa-info-circle"></i> Información</a></li>
       </ul>
-  </div>
+    </div>
     <div class="perfil-usuario-info">
       <router-outlet></router-outlet>
     </div>

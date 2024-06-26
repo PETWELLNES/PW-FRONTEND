@@ -23,23 +23,25 @@ export class LoginComponent {
   ) {}
 
   ngOnInit() {
-    this.authService.getUsername().subscribe(username => {
+    this.authService.getUsername().subscribe((username) => {
       this.username = username;
       this.isLoggedIn = !!username;
     });
   }
 
   login() {
-    this.authService.login(this.username, this.password).subscribe((isLoggedIn) => {
-      this.isLoggedIn = isLoggedIn;
-      if (isLoggedIn) {
-        localStorage.setItem('username', this.username);
-        this.cdr.detectChanges();
-        console.log('Usuario conectado');
-      } else {
-        console.log('Credenciales incorrectas');
-      }
-    });
+    this.authService
+      .login(this.username, this.password)
+      .subscribe((isLoggedIn) => {
+        this.isLoggedIn = isLoggedIn;
+        if (isLoggedIn) {
+          localStorage.setItem('username', this.username);
+          this.cdr.detectChanges();
+          console.log('Usuario conectado');
+        } else {
+          console.log('Credenciales incorrectas');
+        }
+      });
   }
 
   logout() {

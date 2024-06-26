@@ -1,4 +1,5 @@
 export interface User {
+  userId: string;
   username: string;
   name: string;
   lastname: string;
@@ -8,4 +9,6 @@ export interface User {
   birthday: string;
   country: string;
   registerday: string;
+  profileImageUrl: string;
+  bannerUrl: string;
   }
