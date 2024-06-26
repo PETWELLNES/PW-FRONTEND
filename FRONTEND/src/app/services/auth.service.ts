@@ -11,6 +11,7 @@ export class AuthService {
   private isLoggedIn = false;
   private apiUrl = 'http://localhost:8080/api/v1';
   private usernameSubject: BehaviorSubject<string>;
+  private userSubject: BehaviorSubject<User | null>;
 
   constructor(private http: HttpClient) {
     const token = localStorage.getItem('token');
@@ -18,6 +19,14 @@ export class AuthService {
     this.usernameSubject = new BehaviorSubject<string>(
       localStorage.getItem('username') || ''
     );
+    this.userSubject = new BehaviorSubject<User | null>(null);
+
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      this.getUserDetails(parseInt(userId, 10)).subscribe(user => {
+        this.userSubject.next(user);
+      });
+    }
   }
 
   login(username: string, password: string): Observable<boolean> {
@@ -34,6 +43,9 @@ export class AuthService {
             localStorage.setItem('userId', response.userId.toString());
             localStorage.setItem('username', username);
             this.usernameSubject.next(username);
+            this.getUserDetails(response.userId).subscribe(user => {
+              this.userSubject.next(user);
+            });
           }
         }),
         map((response) => !!response.token),
@@ -47,6 +59,7 @@ export class AuthService {
     localStorage.removeItem('userId');
     localStorage.removeItem('username');
     this.usernameSubject.next('');
+    this.userSubject.next(null);
   }
 
   isAuthenticated(): boolean {
@@ -61,6 +74,9 @@ export class AuthService {
           if (response.userId) {
             localStorage.setItem('userId', response.userId.toString());
             localStorage.setItem('username', user.username);
+            this.getUserDetails(response.userId).subscribe(userDetails => {
+              this.userSubject.next(userDetails);
+            });
           }
         }),
         catchError((error) => {
@@ -81,11 +97,25 @@ export class AuthService {
           localStorage.setItem('username', user.username);
           this.usernameSubject.next(user.username);
         }
+        this.userSubject.next(user);
       })
     );
   }
 
   getUsername(): Observable<string> {
     return this.usernameSubject.asObservable();
+  }
+
+  getUser(): Observable<User | null> {
+    return this.userSubject.asObservable();
+  }
+
+  uploadFile(url: string, formData: FormData): Observable<any> {
+    return this.http.post<any>(url, formData).pipe(
+      catchError(error => {
+        console.error('Error uploading file', error);
+        return of(null);
+      })
+    );
   }
 }

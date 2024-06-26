@@ -43,7 +43,7 @@ export class AppComponent {
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event) => {
         const url = (event as NavigationEnd).url;
-        this.showMainContent = url === '/' || url === '/home';
+        this.showMainContent = url === '/' || url === '';
       });
 
     this.uiService.showMainContent$.subscribe((show) => {

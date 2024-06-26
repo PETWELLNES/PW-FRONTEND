@@ -160,6 +160,10 @@
   margin-right: 10px;
 }
 
+.cambiar-foto{
+  cursor: pointer;
+}
+
 @media (max-width: 780px) {
   .perfil-usuario .contenedor-perfil {
     width: 100%;

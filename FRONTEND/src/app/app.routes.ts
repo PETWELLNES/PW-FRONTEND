@@ -21,7 +21,7 @@ import { CreargrupoComponent } from './components/user/grupos/creargrupo/creargr
 import { EditInfoComponent } from './components/user/edit-info/edit-info.component';
 
 export const routes: Routes = [
-  { path: '', component: AppComponent },
+  { path: 'component', component: AppComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'foro', component: ForoComponent },
