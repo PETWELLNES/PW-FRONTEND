@@ -86,7 +86,7 @@ export class AuthService {
       );
   }
 
-  private getUserDetails(userId: number): Observable<User> {
+  public getUserDetails(userId: number): Observable<User> {
     return this.http.get<User>(`${this.apiUrl}/user/${userId}`);
   }
 

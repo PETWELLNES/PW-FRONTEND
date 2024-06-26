@@ -11,4 +11,21 @@ export interface User {
   registerday: string;
   profileImageUrl: string;
   bannerUrl: string;
-  }
+}
+
+export function getDefaultUser(): User {
+  return {
+    userId: '',
+    username: '',
+    name: '',
+    lastname: '',
+    email: '',
+    phone: '',
+    work: '',
+    birthday: '',
+    country: '',
+    registerday: '',
+    profileImageUrl: '',
+    bannerUrl: '',
+  };
+}
