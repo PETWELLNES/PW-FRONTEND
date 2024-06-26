@@ -3,6 +3,8 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user';
 import { CommonModule } from '@angular/common';
+import { UserService } from '../../services/user.service';
+import { ProfileService } from '../../services/profile.service';
 
 @Component({
   selector: 'app-user',
@@ -17,7 +19,11 @@ export class UserComponent implements OnInit {
   user: User | null = null;
   @ViewChild('fileInput') fileInput!: ElementRef;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private userService: UserService,
+    private profileService: ProfileService
+  ) {}
 
   ngOnInit() {
     this.authService.getUsername().subscribe((username) => {
@@ -65,11 +71,11 @@ export class UserComponent implements OnInit {
 
   uploadProfileImage(file: File) {
     if (!this.user || !this.user.userId) {
-      console.error("User ID is not available");
+      console.error('User ID is not available');
       return;
     }
 
-    console.log("User ID:", this.user.userId);
+    console.log('User ID:', this.user.userId);
 
     const formData = new FormData();
     formData.append('file', file);
@@ -77,7 +83,7 @@ export class UserComponent implements OnInit {
 
     const uploadUrl = 'http://localhost:8080/api/v1/user/upload-profile-image';
 
-    this.authService.uploadFile(uploadUrl, formData).subscribe(
+    this.profileService.uploadFile(uploadUrl, formData).subscribe(
       (response: any) => {
         if (response && response.imageUrl) {
           if (this.user) {
@@ -88,7 +94,9 @@ export class UserComponent implements OnInit {
       (error) => {
         console.error('Error uploading file', error);
         if (error.status === 413) {
-          alert('The file is too large to upload. Please select a smaller file.');
+          alert(
+            'The file is too large to upload. Please select a smaller file.'
+          );
         }
       }
     );

@@ -8,8 +8,8 @@ import { User } from '../models/user';
   providedIn: 'root',
 })
 export class AuthService {
-  private isLoggedIn = false;
   private apiUrl = 'http://localhost:8080/api/v1';
+  private isLoggedIn = false;
   private usernameSubject: BehaviorSubject<string>;
   private userSubject: BehaviorSubject<User | null>;
 
@@ -23,7 +23,7 @@ export class AuthService {
 
     const userId = localStorage.getItem('userId');
     if (userId) {
-      this.getUserDetails(parseInt(userId, 10)).subscribe(user => {
+      this.getUserDetails(parseInt(userId, 10)).subscribe((user) => {
         this.userSubject.next(user);
       });
     }
@@ -43,7 +43,7 @@ export class AuthService {
             localStorage.setItem('userId', response.userId.toString());
             localStorage.setItem('username', username);
             this.usernameSubject.next(username);
-            this.getUserDetails(response.userId).subscribe(user => {
+            this.getUserDetails(response.userId).subscribe((user) => {
               this.userSubject.next(user);
             });
           }
@@ -74,7 +74,7 @@ export class AuthService {
           if (response.userId) {
             localStorage.setItem('userId', response.userId.toString());
             localStorage.setItem('username', user.username);
-            this.getUserDetails(response.userId).subscribe(userDetails => {
+            this.getUserDetails(response.userId).subscribe((userDetails) => {
               this.userSubject.next(userDetails);
             });
           }
@@ -86,20 +86,8 @@ export class AuthService {
       );
   }
 
-  getUserDetails(userId: number): Observable<User> {
+  private getUserDetails(userId: number): Observable<User> {
     return this.http.get<User>(`${this.apiUrl}/user/${userId}`);
-  }
-
-  updateUserDetails(userId: number, user: User): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/user/${userId}`, user).pipe(
-      tap(() => {
-        if (user.username) {
-          localStorage.setItem('username', user.username);
-          this.usernameSubject.next(user.username);
-        }
-        this.userSubject.next(user);
-      })
-    );
   }
 
   getUsername(): Observable<string> {
@@ -108,14 +96,5 @@ export class AuthService {
 
   getUser(): Observable<User | null> {
     return this.userSubject.asObservable();
-  }
-
-  uploadFile(url: string, formData: FormData): Observable<any> {
-    return this.http.post<any>(url, formData).pipe(
-      catchError(error => {
-        console.error('Error uploading file', error);
-        return of(null);
-      })
-    );
   }
 }
