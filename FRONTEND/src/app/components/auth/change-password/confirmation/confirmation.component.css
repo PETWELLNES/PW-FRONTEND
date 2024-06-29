@@ -1,0 +1,30 @@
+.confirmation{
+    display: grid;
+    grid-template-rows: 50% 50%;
+    justify-items: center;
+    font-size: 25px;
+}
+
+button{
+    margin: 10px;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    padding-inline: 15px;
+    padding-block: 5px;
+    font-size: 20px;
+}
+
+.si{
+    background-color: #d03733;
+}
+
+.cancelar{
+    background-color: #00c4cc;
+}
+
+button:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+    transition: 0.3s;
+}

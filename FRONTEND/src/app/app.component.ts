@@ -4,12 +4,12 @@ import { filter } from 'rxjs';
 import { UiService } from './services/ui.service';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet, RouterLink } from '@angular/router';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
+import { NavbarComponent } from './components/layout/navbar/navbar.component';
+import { FooterComponent } from './components/layout/footer/footer.component';
+import { LoginComponent } from './components/auth/login/login.component';
 import { ForoComponent } from './components/foro/foro.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { RegisterComponent } from './components/auth/register/register.component';
 
 @Component({
   selector: 'app-root',
@@ -35,10 +35,7 @@ export class AppComponent {
   showMainContent = true;
   showLoginModal = false;
 
-  constructor(
-    private uiService: UiService,
-    private router: Router,
-  ) {
+  constructor(private uiService: UiService, private router: Router) {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event) => {

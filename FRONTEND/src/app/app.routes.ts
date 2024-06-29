@@ -1,17 +1,16 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/auth/login/login.component';
 import { ForoComponent } from './components/foro/foro.component';
 import { AppComponent } from './app.component';
 import { PerrosComponent } from './components/foro/perros/perros.component';
-import { ForgotComponent } from './components/login/forgot/forgot.component';
+import { ForgotComponent } from './components/auth/login/forgot/forgot.component';
 import { GatosComponent } from './components/foro/gatos/gatos.component';
 import { PecesComponent } from './components/foro/peces/peces.component';
 import { RoedoresComponent } from './components/foro/roedores/roedores.component';
 import { ReptilesComponent } from './components/foro/reptiles/reptiles.component';
 import { AvesComponent } from './components/foro/aves/aves.component';
 import { OtrosComponent } from './components/foro/otros/otros.component';
-import { NosotrosComponent } from './components/nosotros/nosotros.component';
+import { NosotrosComponent } from './components/public/nosotros/nosotros.component';
 import { UserComponent } from './components/user/user.component';
 import { InfoComponent } from './components/user/info/info.component';
 import { PostsComponent } from './components/user/posts/posts.component';
@@ -19,6 +18,8 @@ import { PostComponent } from './components/foro/post/post.component';
 import { GruposComponent } from './components/user/grupos/grupos.component';
 import { CreargrupoComponent } from './components/user/grupos/creargrupo/creargrupo.component';
 import { EditInfoComponent } from './components/user/edit-info/edit-info.component';
+import { RegisterComponent } from './components/auth/register/register.component';
+import { ChangePasswordComponent } from './components/auth/change-password/change-password.component';
 
 export const routes: Routes = [
   { path: 'component', component: AppComponent },
@@ -46,4 +47,5 @@ export const routes: Routes = [
     ],
   },
   { path: 'editInfo', component: EditInfoComponent },
+  { path: 'cambiar-contraseña', component: ChangePasswordComponent },
 ];

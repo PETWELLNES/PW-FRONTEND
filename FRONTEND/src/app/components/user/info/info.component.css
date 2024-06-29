@@ -41,6 +41,7 @@ button{
 
 button:hover{
     cursor: pointer;
-    font-size: 1.5rem;
+    transform: scale(1.2);
+    font-weight: bold;
     transition: 0.3s;
 }
