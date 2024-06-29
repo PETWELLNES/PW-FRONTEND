@@ -4,11 +4,12 @@ import { AuthService } from '../../services/auth.service';
 import { User, getDefaultUser } from '../../models/user';
 import { CommonModule } from '@angular/common';
 import { ProfileService } from '../../services/profile.service';
+import { ImageCropperComponent } from 'ngx-image-cropper';
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [RouterLink, RouterOutlet, CommonModule],
+  imports: [RouterLink, RouterOutlet, CommonModule, ImageCropperComponent],
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css'],
 })
@@ -35,15 +36,21 @@ export class UserComponent implements OnInit {
       console.log('User loaded:', this.user);
     });
 
-    this.activeMenu = this.getActiveMenuFromUrl();
+    if (this.isBrowser()) {
+      this.activeMenu = this.getActiveMenuFromUrl(window.location.pathname);
+    }
+  }
+
+  private isBrowser(): boolean {
+    return typeof window !== 'undefined';
   }
 
   setActiveMenu(menu: string) {
     this.activeMenu = menu;
   }
 
-  getActiveMenuFromUrl(): string {
-    const currentUrl = window.location.pathname;
+  getActiveMenuFromUrl(url: string): string {
+    const currentUrl = url;
     if (currentUrl.includes('posts')) {
       return 'posts';
     } else if (currentUrl.includes('info')) {

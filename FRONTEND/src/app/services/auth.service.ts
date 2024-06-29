@@ -14,18 +14,41 @@ export class AuthService {
   private userSubject: BehaviorSubject<User | null>;
 
   constructor(private http: HttpClient) {
-    const token = localStorage.getItem('token');
-    this.isLoggedIn = !!token;
-    this.usernameSubject = new BehaviorSubject<string>(
-      localStorage.getItem('username') || ''
-    );
+    this.usernameSubject = new BehaviorSubject<string>('');
     this.userSubject = new BehaviorSubject<User | null>(null);
 
-    const userId = localStorage.getItem('userId');
-    if (userId) {
-      this.getUserDetails(parseInt(userId, 10)).subscribe((user) => {
-        this.userSubject.next(user);
-      });
+    if (this.isLocalStorageAvailable()) {
+      const token = localStorage.getItem('token');
+      this.isLoggedIn = !!token;
+      this.usernameSubject.next(localStorage.getItem('username') || '');
+      const userId = localStorage.getItem('userId');
+      if (userId) {
+        this.getUserDetails(parseInt(userId, 10)).subscribe((user) => {
+          this.userSubject.next(user);
+        });
+      }
+    } else {
+      console.warn('localStorage is not available');
+    }
+  }
+
+  private isLocalStorageAvailable(): boolean {
+    try {
+      const testKey = 'test';
+      localStorage.setItem(testKey, testKey);
+      localStorage.removeItem(testKey);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  public getToken(): string | null {
+    if (this.isLocalStorageAvailable()) {
+      return localStorage.getItem('token');
+    } else {
+      console.warn('localStorage is not available');
+      return null;
     }
   }
 
@@ -55,9 +78,11 @@ export class AuthService {
 
   logout(): void {
     this.isLoggedIn = false;
-    localStorage.removeItem('token');
-    localStorage.removeItem('userId');
-    localStorage.removeItem('username');
+    if (this.isLocalStorageAvailable()) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('userId');
+      localStorage.removeItem('username');
+    }
     this.usernameSubject.next('');
     this.userSubject.next(null);
   }
@@ -72,8 +97,10 @@ export class AuthService {
       .pipe(
         tap((response) => {
           if (response.userId) {
-            localStorage.setItem('userId', response.userId.toString());
-            localStorage.setItem('username', user.username);
+            if (this.isLocalStorageAvailable()) {
+              localStorage.setItem('userId', response.userId.toString());
+              localStorage.setItem('username', user.username);
+            }
             this.getUserDetails(response.userId).subscribe((userDetails) => {
               this.userSubject.next(userDetails);
             });
@@ -96,5 +123,49 @@ export class AuthService {
 
   getUser(): Observable<User | null> {
     return this.userSubject.asObservable();
+  }
+
+  recoverPassword(email: string): Observable<boolean> {
+    return this.http
+      .post<{ success: boolean }>(`${this.apiUrl}/user/recover-password`, {
+        email,
+      })
+      .pipe(
+        map((response) => response.success),
+        catchError(() => of(false))
+      );
+  }
+
+  validateCurrentPassword(currentPassword: string): Observable<boolean> {
+    return this.http
+      .post<{ valid: boolean }>(`${this.apiUrl}/user/validate-password`, {
+        password: currentPassword,
+      })
+      .pipe(
+        map((response) => response.valid),
+        catchError(() => of(false))
+      );
+  }
+
+  changePassword(currentPassword: string, newPassword: string): Observable<boolean> {
+    const token = localStorage.getItem('token');
+    const headers = { 'Authorization': `Bearer ${token}` };
+  
+    return this.http
+      .post<{ message: string }>(`${this.apiUrl}/user/change-password`, { currentPassword, newPassword }, { headers })
+      .pipe(
+        map(response => {
+          console.log(response.message);
+          return true;
+        }),
+        catchError((error) => {
+          console.error('Error en la solicitud de cambio de contraseña:', error);
+          return of(false);
+        })
+      );
+  }
+
+  private getUserIdFromLocalStorage(): number {
+    return parseInt(localStorage.getItem('userId') || '0', 10);
   }
 }
