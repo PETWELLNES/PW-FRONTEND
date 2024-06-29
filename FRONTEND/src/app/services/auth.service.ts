@@ -125,17 +125,6 @@ export class AuthService {
     return this.userSubject.asObservable();
   }
 
-  recoverPassword(email: string): Observable<boolean> {
-    return this.http
-      .post<{ success: boolean }>(`${this.apiUrl}/user/recover-password`, {
-        email,
-      })
-      .pipe(
-        map((response) => response.success),
-        catchError(() => of(false))
-      );
-  }
-
   validateCurrentPassword(currentPassword: string): Observable<boolean> {
     return this.http
       .post<{ valid: boolean }>(`${this.apiUrl}/user/validate-password`, {
@@ -147,19 +136,29 @@ export class AuthService {
       );
   }
 
-  changePassword(currentPassword: string, newPassword: string): Observable<boolean> {
+  changePassword(
+    currentPassword: string,
+    newPassword: string
+  ): Observable<boolean> {
     const token = localStorage.getItem('token');
-    const headers = { 'Authorization': `Bearer ${token}` };
-  
+    const headers = { Authorization: `Bearer ${token}` };
+
     return this.http
-      .post<{ message: string }>(`${this.apiUrl}/user/change-password`, { currentPassword, newPassword }, { headers })
+      .post<{ message: string }>(
+        `${this.apiUrl}/user/change-password`,
+        { currentPassword, newPassword },
+        { headers }
+      )
       .pipe(
-        map(response => {
+        map((response) => {
           console.log(response.message);
           return true;
         }),
         catchError((error) => {
-          console.error('Error en la solicitud de cambio de contraseña:', error);
+          console.error(
+            'Error en la solicitud de cambio de contraseña:',
+            error
+          );
           return of(false);
         })
       );
@@ -167,5 +166,34 @@ export class AuthService {
 
   private getUserIdFromLocalStorage(): number {
     return parseInt(localStorage.getItem('userId') || '0', 10);
+  }
+
+  sendPasswordResetEmail(email: string): Observable<void> {
+    return this.http
+      .post<void>(`${this.apiUrl}/password/reset`, { email })
+      .pipe(
+        tap(() =>
+          console.log('Correo de restablecimiento de contraseña enviado')
+        ),
+        catchError((error) => {
+          console.error(
+            'Error al enviar el correo de restablecimiento de contraseña:',
+            error
+          );
+          throw error;
+        })
+      );
+  }
+
+  updatePassword(token: string, password: string): Observable<void> {
+    return this.http
+      .post<void>(`${this.apiUrl}/password/update`, { token, newPassword: password })
+      .pipe(
+        tap(() => console.log('Contraseña actualizada con éxito')),
+        catchError((error) => {
+          console.error('Error al actualizar la contraseña:', error);
+          throw error;
+        })
+      );
   }
 }
