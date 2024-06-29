@@ -20,6 +20,7 @@ import { CreargrupoComponent } from './components/user/grupos/creargrupo/creargr
 import { EditInfoComponent } from './components/user/edit-info/edit-info.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { ChangePasswordComponent } from './components/auth/change-password/change-password.component';
+import { ResetPasswordComponent } from './components/auth/reset-password/reset-password.component';
 
 export const routes: Routes = [
   { path: 'component', component: AppComponent },
@@ -48,4 +49,5 @@ export const routes: Routes = [
   },
   { path: 'editInfo', component: EditInfoComponent },
   { path: 'cambiar-contraseña', component: ChangePasswordComponent },
+  { path: 'recuperar-cuenta', component: ResetPasswordComponent },
 ];

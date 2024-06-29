@@ -6,8 +6,8 @@
         </div>
         <div class="form">
             <h2>Correo</h2>
-            <input type="email" [(ngModel)]="email" placeholder="">
+            <input type="email" [(ngModel)]="email" placeholder="Ingresa tu correo electrónico">
         </div>
-        <button class="crear" (click)="onRecoverPassword()">ENVIAR</button>
+        <button [routerLink]="['/recuperar-cuenta']" class="enviar" (click)="sendResetEmail()">ENVIAR</button>
     </section>
 </div>
