@@ -1,1 +1,26 @@
-<p>posts works!</p>
+<div class="forocontent">
+    <div class="foro">
+        <h2>Mis Publicaciones</h2>
+        <ul class="posts-list">
+            <li class="post" *ngFor="let post of posts">
+                <div>
+                    <div class="postTitulo">
+                        <i class="fa-solid fa-message" id="respuestas">
+                            <p>{{ post.responsesCount || 0 }}</p>
+                        </i>
+                        <div class="post-title">
+                            <a [routerLink]="['/thread', post.postId]">{{ post.title }}</a>
+                        </div>
+                    </div>
+                    <div class="post-info">
+                        <small>Creado el: {{ post.createdAt | date:'short' }}</small>
+                    </div>
+                </div>
+                <i class="fa-solid fa-x" style="color: #000000;" (click)="confirmDeletePost(post.postId)"></i>
+            </li>
+            <li *ngIf="posts.length === 0">
+                <p>No has publicado nada aún.</p>
+            </li>
+        </ul>
+    </div>
+</div>

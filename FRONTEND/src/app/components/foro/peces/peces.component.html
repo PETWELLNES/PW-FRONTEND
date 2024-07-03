@@ -32,8 +32,22 @@
             <div class="cat">
                 <img src="../../../assets/fish.png" alt="">
                 <h1>Peces</h1>
-                <div class="drop">
-                    <app-dropdown-menu></app-dropdown-menu></div>
+            </div>
+            <div class="posts">
+                <div class="foro" *ngFor="let post of posts">
+                    <div class="cat">
+                        <div class="usuario" *ngIf="post.user">
+                            <img [src]="post.user.profileImageUrl" alt="Perfil">
+                            <h2>{{ post.user.username }}</h2>
+                        </div>
+                        <div class="post-info">
+                            <h1 [routerLink]="['/thread', post.postId]">{{ post.title }}</h1>
+                            <div class="fecha-autor">
+                                <small>Creado el: {{ post.createdAt | date:'short' }}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

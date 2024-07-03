@@ -3,8 +3,9 @@
         <div class="imagen">
             <img [src]="profileImageUrl" alt="Profile Image">
         </div>
-        <p [routerLink]="['/perfil/posts']">{{username}}</p>
+        <p [routerLink]="['/perfil']">{{username}}</p>
     </div>
+    <h2 [routerLink]="['/mascotas']">Mascotas</h2>
     <h2 [routerLink]="['/grupos']">Grupos</h2>
     <h3 (click)="logout()">Cerrar Sesión</h3>
 </div>
