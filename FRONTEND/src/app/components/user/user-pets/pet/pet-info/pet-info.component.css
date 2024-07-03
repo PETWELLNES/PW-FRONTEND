@@ -1,0 +1,47 @@
+.body {
+    display: grid;
+    justify-items: center;
+}
+
+.info {
+    display: grid;
+    justify-items: center;
+}
+
+.perfil-mascota-info {
+    padding: 1.5rem 2rem;
+    width: 100%;
+    font-size: 1.25rem;
+}
+
+.perfil-mascota-info li {
+    padding-block: 0.5rem;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+}
+
+.lista-datos i {
+    width: 20px;
+    margin-right: 10px;
+}
+
+button {
+    width: 200px;
+    font-size: 1.25rem;
+    padding-block: 5px;
+    padding-inline: 15px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    background-color: #D03733;
+}
+
+button:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+    font-weight: bold;
+    transition: 0.3s;
+}

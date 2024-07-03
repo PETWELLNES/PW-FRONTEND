@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreargrupoComponent } from './creargrupo.component';
+import { PetDescComponent } from './pet-desc.component';
 
-describe('CreargrupoComponent', () => {
-  let component: CreargrupoComponent;
-  let fixture: ComponentFixture<CreargrupoComponent>;
+describe('PetDescComponent', () => {
+  let component: PetDescComponent;
+  let fixture: ComponentFixture<PetDescComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CreargrupoComponent]
+      imports: [PetDescComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(CreargrupoComponent);
+    fixture = TestBed.createComponent(PetDescComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

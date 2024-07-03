@@ -33,7 +33,6 @@ export class UserComponent implements OnInit {
 
     this.authService.getUser().subscribe((user) => {
       this.user = user || getDefaultUser();
-      console.log('User loaded:', this.user);
     });
 
     if (this.isBrowser()) {
@@ -101,8 +100,6 @@ export class UserComponent implements OnInit {
       return;
     }
 
-    console.log('User ID:', this.user.userId);
-
     const formData = new FormData();
     formData.append('file', file);
     formData.append('userId', this.user.userId);
@@ -134,8 +131,6 @@ export class UserComponent implements OnInit {
       return;
     }
 
-    console.log('User ID:', this.user.userId);
-
     const formData = new FormData();
     formData.append('file', file);
     formData.append('userId', this.user.userId);
@@ -147,7 +142,6 @@ export class UserComponent implements OnInit {
         if (response && response.imageUrl) {
           if (this.user) {
             this.user.bannerUrl = response.imageUrl;
-            console.log('Banner URL updated:', this.user.bannerUrl);
           }
         }
       },

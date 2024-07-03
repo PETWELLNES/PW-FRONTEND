@@ -1,1 +1,29 @@
-<p>pet works!</p>
+<section class="perfil-mascota">
+    <div class="contenedor-perfil">
+        <div class="avatar-perfil">
+            <img [src]="selectedPet.profilePhoto ? 'data:image/jpeg;base64,' + selectedPet.profilePhoto : '../../../../../assets/LOGO_PETWELLNES_R.png'"
+                alt="img">
+            <a class="cambiar-foto" (click)="triggerFileInput()">
+                <i class="fas fa-camera"></i>
+                <span>Cambiar foto</span>
+            </a>
+            <input type="file" #fileInput accept="image/*" style="display: none;" (change)="onFileSelected($event)">
+        </div>
+        <div class="datos-perfil">
+            <h4 class="titulo-usuario">{{selectedPet.name}}</h4>
+        </div>
+    </div>
+    <div class="menu-perfil">
+        <ul>
+            <li><a [routerLink]="['/mascota', selectedPet.id, 'pet-desc']" [class.active]="activeMenu === 'pet-desc'"
+                    (click)="setActiveMenu('pet-desc')">Descripción</a></li>
+            <li><a [routerLink]="['/mascota', selectedPet.id, 'vet-visit']" [class.active]="activeMenu === 'vet-visit'"
+                    (click)="setActiveMenu('vet-visit')">Historial Médico</a></li>
+            <li><a [routerLink]="['/mascota', selectedPet.id, 'pet-info']" [class.active]="activeMenu === 'pet-info'"
+                    (click)="setActiveMenu('pet-info')">Información</a></li>
+        </ul>
+    </div>
+    <div class="perfil-mascota-info">
+        <router-outlet></router-outlet>
+    </div>
+</section>

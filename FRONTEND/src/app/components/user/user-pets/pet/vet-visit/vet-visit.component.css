@@ -1,0 +1,49 @@
+.vet-visit{
+    margin-inline: 100px;
+    margin-block: 25px;
+    display: flex;
+}
+
+section{
+    margin-inline: 10px;
+}
+
+.opciones{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    font-size: 35px;
+}
+
+.lista{
+    border: 2px solid black;
+    border-radius: 20px;
+    min-height: 500px;
+    min-width: 100%;
+}
+
+.historia{
+    margin: 15px;
+}
+
+summary{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 25px;
+    min-height: 30px;
+    border: 2px solid black;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.info-options{
+    display: flex;
+    align-items: center;
+    margin-inline: 10px;
+}
+
+i{
+    margin-inline: 10px;
+    cursor: pointer;
+}

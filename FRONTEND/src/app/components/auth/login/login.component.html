@@ -5,8 +5,7 @@
         </div>
         <p [routerLink]="['/perfil']">{{username}}</p>
     </div>
-    <h2 [routerLink]="['/mascotas']">Mascotas</h2>
-    <h2 [routerLink]="['/grupos']">Grupos</h2>
+    <h2 [routerLink]="['/perfil/user-pets']">Mascotas</h2>
     <h3 (click)="logout()">Cerrar Sesión</h3>
 </div>
 <ng-template #loginForm>

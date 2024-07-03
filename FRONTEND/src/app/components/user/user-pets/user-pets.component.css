@@ -38,4 +38,10 @@ i{
 .pet h1{
     display: grid;
     justify-items: center;
+    cursor: pointer;
+}
+
+h3{
+  display: grid;
+  justify-items: center;
 }

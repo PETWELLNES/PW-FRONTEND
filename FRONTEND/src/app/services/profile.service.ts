@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -9,12 +9,18 @@ import { catchError } from 'rxjs/operators';
 export class ProfileService {
   constructor(private http: HttpClient) {}
 
-  uploadFile(url: string, formData: FormData): Observable<any> {
-    return this.http.post<any>(url, formData).pipe(
-      catchError((error) => {
-        console.error('Error uploading file', error);
-        return of(null);
-      })
-    );
+  uploadFile(
+    url: string,
+    formData: FormData,
+    headers?: HttpHeaders
+  ): Observable<any> {
+    return this.http
+      .post(url, formData, { headers, responseType: 'text' })
+      .pipe(
+        catchError((error) => {
+          console.error('Error uploading file', error);
+          return of(null);
+        })
+      );
   }
 }

@@ -4,7 +4,8 @@
             <img [src]="pet.profilePhoto ? 'data:image/jpeg;base64,' + pet.profilePhoto : '../../../../assets/default.jpg'"
                 alt="">
         </div>
-        <h1>{{ pet.name }}</h1>
+        <h1 (click)="selectPet(pet)" [routerLink]="['/mascota', pet.id, 'pet-desc']">{{ pet.name }}</h1>
+        <h3>{{ pet.age }}</h3>
         <h2>{{ pet.speciesName }}</h2>
         <h2>{{ pet.breedName }}</h2>
     </div>
