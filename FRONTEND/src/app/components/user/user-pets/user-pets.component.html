@@ -8,7 +8,7 @@
         <h3>{{ pet.age }}</h3>
         <h2>{{ pet.speciesName }}</h2>
         <h2>{{ pet.breedName }}</h2>
-        <i class="fa-solid fa-x" style="color: #000000;"></i>
+        <i class="fa-solid fa-x" style="color: #000000;" (click)="confirmDeletePet(pet.id)"></i>
     </div>
     <div class="pet">
         <i [routerLink]="['/añadir-mascota']" class="fa-solid fa-square-plus fa-bounce" style="color: #000000;"></i>
