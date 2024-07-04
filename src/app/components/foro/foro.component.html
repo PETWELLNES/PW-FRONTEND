@@ -1,0 +1,94 @@
+<div class="main">
+    <div class="broadcrumb">
+        <a [routerLink]="['']" class="broad">
+            <i class="fa-solid fa-house"></i>
+            <span>Inicio</span>
+        </a>
+        <span class="broadforo"> / Foro</span>
+    </div>
+    <div class="Titulo">Foro de Mascotas</div>
+    <div class="busqueda">
+        <div class="barra">
+            <i class="fa-solid fa-magnifying-glass" style="color: #000000;"></i>
+            <input type="text" placeholder="Buscar en los foros">
+        </div>
+        <button class="preguntar" [routerLink]="['/post']">Preguntar en el Foro</button>
+    </div>
+    <div class="forocontent">
+        <div class="categorias">
+            <ul class="tipomascota">
+                <li class="tipo">
+                    <a [routerLink]="['/perros']">
+                        <span class="icono p"></span>
+                        <p>Perros</p>
+                    </a>
+                </li>
+                <li class="tipo">
+                    <a [routerLink]="['/gatos']">
+                        <span class="icono g"></span>
+                        <p>Gatos</p>
+                    </a>
+                </li>
+                <li class="tipo">
+                    <a [routerLink]="['/peces']">
+                        <span class="icono pez"></span>
+                        <p>Peces</p>
+                    </a>
+                </li>
+                <li class="tipo">
+                    <a [routerLink]="['/roedores']">
+                        <span class="icono r"></span>
+                        <p>Roedores</p>
+                    </a>
+                </li>
+                <li class="tipo">
+                    <a [routerLink]="['/aves']">
+                        <span class="icono a"></span>
+                        <p>Aves</p>
+                    </a>
+                </li>
+                <li class="tipo">
+                    <a [routerLink]="['/reptiles']">
+                        <span class="icono rep"></span>
+                        <p>Reptiles</p>
+                    </a>
+                </li>
+                <li class="tipo">
+                    <a [routerLink]="['/otros']">
+                        <span class="icono o"></span>
+                        <p>Otros</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="foro">
+            <h2>Publicaciones Recientes</h2>
+            <div *ngFor="let type of petTypesOrder">
+                <div class="cat">
+                    <div class="tipo">
+                        <img [src]="'../../../assets/' + getIconName(type)" alt="">
+                        <h1>{{ type }}</h1>
+                    </div>
+                    <ul class="posts-list">
+                        <li class="post" *ngFor="let post of recentPostsGroupedByType[type]">
+                            <div class="postTitulo">
+                                <i class="fa-solid fa-message" id="respuestas">
+                                    <p>0</p>
+                                </i>
+                                <div class="post-title">
+                                    <a [routerLink]="['/thread', post.postId]">{{ post.title }}</a>
+                                </div>
+                            </div>
+                            <div class="post-info">
+                                <small>Creado el: {{ post.createdAt | date:'short' }}</small>
+                            </div>
+                        </li>
+                        <li *ngIf="recentPostsGroupedByType[type]?.length === 0">
+                            <p>No hay publicaciones recientes en esta categoría.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

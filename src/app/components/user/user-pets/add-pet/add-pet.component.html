@@ -1,0 +1,32 @@
+<div class="add-pet">
+    <h2>Agregar Mascota</h2>
+    <form [formGroup]="petForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="name">Nombre:</label>
+            <input id="name" formControlName="name" type="text" />
+        </div>
+        <div>
+            <label for="species">Species</label>
+            <select id="species" formControlName="species">
+                <option *ngFor="let species of speciesList" [value]="species.id">{{ species.name }}</option>
+            </select>
+        </div>
+        <div>
+            <label for="breed">Raza:</label>
+            <select id="breed" formControlName="breed">
+                <option *ngFor="let breed of breedsList" [value]="breed.petBreedId">
+                    {{ breed.name }}
+                </option>
+            </select>
+        </div>
+        <div>
+            <label for="age">Edad:</label>
+            <input id="age" formControlName="age" type="number" />
+        </div>
+        <div>
+            <label for="profilePhoto">Foto de Perfil:</label>
+            <input id="profilePhoto" type="file" (change)="onFileSelected($event)" />
+        </div>
+        <button type="submit" [disabled]="petForm.invalid">Agregar</button>
+    </form>
+</div>

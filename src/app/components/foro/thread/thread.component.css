@@ -1,0 +1,145 @@
+.main {
+  margin-inline: 200px;
+}
+
+.broadforo {
+  color: #d03733;
+}
+
+.broad:hover,
+.broad i:hover {
+  color: #d03733;
+  transition: color 0.3s ease;
+}
+
+.broad {
+  color: black;
+}
+
+.broadcrumb {
+  margin-left: 25px;
+  margin-top: 15px;
+}
+
+.titulo {
+  color: black;
+  font-weight: bold;
+  font-size: 35px;
+  display: grid;
+  justify-items: center;
+}
+
+.thread .hilo {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+  background-color: #fff;
+}
+
+.thread .contenido {
+  margin-top: 16px;
+}
+
+.thread .fecha-autor {
+  font-size: 14px;
+  color: #757575;
+  display: grid;
+  justify-items: center;
+}
+
+.respuestas .usuario {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.respuestas .usuario img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.respuestas .respuesta {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+  background-color: #fff;
+}
+
+.respuesta div{
+  display: flex;
+  align-items: center;
+}
+
+.likes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.likes i {
+  cursor: pointer;
+}
+
+.responder #editor-container {
+  margin-bottom: 35px;
+  height: 350px;
+}
+
+.boton-responder{
+  display: grid;
+  justify-items: end;
+}
+
+.responder button {
+  margin-bottom: 20px;
+  margin-top: -15px;
+  font-size: 20px;
+  padding: 10px 15px;
+  background-color: #d03733;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.responder button:hover {
+  background-color: #f0403a;
+  transform: scale(1.3);
+  transition: 0.3s;
+}
+
+.iconos{
+  display: flex;
+  margin-top: 25px;
+  justify-content: space-between;
+}
+
+i#respuestas{
+  color: #d03733;
+  position: relative;
+  font-size: 30px;
+}
+
+i#respuestas p{
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-top: 3.5px;
+}
+
+i#editar{
+  margin-top: 5px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.fa-solid.fa-heart, .fa-solid.fa-reply{
+  font-size: 35px;
+}

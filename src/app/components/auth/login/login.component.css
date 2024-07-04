@@ -1,0 +1,131 @@
+.menu-login{
+    border-radius: 20px;
+    border-color: white;  
+}
+
+.llenar{
+    font-size: 20px;
+}
+
+.llenar h1{
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+.llenar input{
+    margin: 10px;
+    width: 270px;
+    height: 30px;
+    font-size: 20px;
+}
+
+.buttonmenulogin{
+    margin-top: 10px; 
+    text-align: center;
+}
+
+.login, .register{
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.login button{
+    font-family: "League Spartan", sans-serif;
+    background-color: #D03733;
+    color: white;
+    border-radius: 50px;
+    border: none;
+    font-size: 32px;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+}
+
+.login button:hover, .register a:hover{
+    font-size: 36px;
+    transition: 0.3s;
+}
+
+.register a{
+    font-family: "League Spartan", sans-serif;
+    background-color: #00C4CC;
+    color: white;
+    border-radius: 50px;
+    border: none;
+    font-size: 32px;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+}
+
+.forgotpsw{
+    margin: 10px;
+}
+
+.forgotpsw a{
+    color: black;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.forgotpsw a:hover{
+    color: #D03733;
+    transition: 0.3s;
+}
+
+.user{
+    display: flex;
+    align-items: center;
+}
+
+.user p{
+    margin-left: 10px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.user p:hover{
+    color: #ff544e;
+    transition: 0.3s;
+}
+
+.user img{
+    height: 60px;
+    width: 60px;
+}
+
+.imagen{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden; 
+}
+
+h2{
+    margin-top: 10px;
+    font-size: 25px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+h2:hover{
+    color: #ff544e;
+    transition: 0.3s;
+}
+
+h3{
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+h3:hover{
+    color: #ff544e;
+    transition: 0.3s;
+}

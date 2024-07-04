@@ -1,0 +1,13 @@
+<div class="main">
+    <section class="forgot">
+        <div class="titulo">
+            <img src="../../../assets/LOGO_PETWELLNES_R.png" alt="">
+            <h1>Recuperar Cuenta</h1>
+        </div>
+        <div class="form">
+            <h2>Correo</h2>
+            <input type="email" [(ngModel)]="email" placeholder="Ingresa tu correo electrónico">
+        </div>
+        <button [routerLink]="['/recuperar-cuenta']" class="enviar" (click)="sendResetEmail()">ENVIAR</button>
+    </section>
+</div>

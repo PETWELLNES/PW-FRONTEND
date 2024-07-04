@@ -1,0 +1,269 @@
+.broadforo {
+  color: #d03733;
+}
+
+.broad:hover,
+.broad i:hover {
+  color: #d03733;
+  transition: color 0.3s ease;
+}
+
+.broad {
+  color: black;
+}
+
+.broadcrumb {
+  margin-left: 25px;
+  margin-top: 15px;
+}
+
+.Titulo {
+  color: black;
+  font-weight: bold;
+  margin-left: 125px;
+  font-size: 35px;
+}
+
+.busqueda {
+  display: flex;
+  justify-content: space-between;
+}
+
+.barra {
+  margin-left: 200px;
+  margin-top: 20px;
+}
+
+.barra i {
+  font-size: 20px;
+}
+
+.barra input {
+  margin-left: 10px;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  width: 1000px;
+  border-bottom: 3px solid #d03733;
+}
+
+.preguntar {
+  background-color: #d03733;
+  color: white;
+  border-radius: 20px;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 25px;
+  padding-inline: 20px;
+  margin-right: 200px;
+}
+
+.preguntar:hover {
+  transition: 0.08s linear;
+  background-color: #ff544e;
+}
+
+.forocontent {
+  display: flex;
+  flex-direction: column;
+}
+
+.tipomascota {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  margin-left: 450px;
+  display: grid;
+  grid-template-columns: repeat(7, 120px);
+}
+
+.tipo a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #807766;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.tipo a:hover {
+  color: #ff544e;
+}
+
+.tipo a:hover > .icono {
+  background-color: #ff544e;
+  border-color: #ff544e;
+}
+
+.tipo a:hover > .icono::before {
+  background-color: white;
+}
+
+.icono {
+  position: relative;
+  margin-bottom: 5px;
+  padding-top: 90px;
+  width: 90px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid #bbb4a7;
+  border-radius: 100%;
+}
+
+.icono::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  background-color: #bbb4a7;
+  content: "";
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
+.icono.p::before {
+  mask-image: url(../../../assets/dog.png);
+}
+
+.icono.g::before {
+  mask-image: url(../../../assets/cat.png);
+}
+
+.icono.pez::before {
+  mask-image: url(../../../assets/fish.png);
+}
+
+.icono.r::before {
+  mask-image: url(../../../assets/rabbit.png);
+}
+
+.icono.a::before {
+  mask-image: url(../../../assets/bird.png);
+}
+
+.icono.rep::before {
+  mask-image: url(../../../assets/snake.png);
+}
+
+.icono.o::before {
+  mask-image: url(../../../assets/horse.png);
+}
+
+.foro{
+  margin-inline: 200px;
+}
+
+.foro .cat {
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+  background-color: #fff;
+}
+
+.foro .cat img {
+  width: 50px;
+  height: 50px;
+}
+
+.posts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.post {
+  padding: 10px;
+  border-bottom: 1px solid #d03733;
+}
+
+.post-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+.post-title a{
+  color: black;
+}
+
+.post-title a:hover{
+  color: #d03733;
+}
+
+.post-info {
+  font-size: 14px;
+  color: #757575;
+}
+
+.razas {
+  position: relative;
+}
+
+.nav-item {
+  position: relative;
+  cursor: pointer;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #000;
+  display: block;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 4;
+}
+
+.foro .post {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.foro .post h2 {
+  margin-top: 0;
+}
+
+.foro .post small {
+  color: #888;
+}
+
+.tipo{
+  display: flex;
+  align-items: center;
+}
+
+h1{
+  margin-left: 15px;
+}
+
+.postTitulo{
+  display: flex;
+}
+
+
+i#respuestas{
+  color: #d03733;
+  position: relative;
+  font-size: 30px;
+}
+
+i p{
+  color: white;    
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  font-size: 20px;
+}

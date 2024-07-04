@@ -1,0 +1,124 @@
+.perfil-mascota .contenedor-perfil {
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.perfil-mascota .avatar-perfil {
+  display: block;
+  width: 230px;
+  height: 230px;
+  background-color: #d9dcf1;
+  position: relative;
+  margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 8px solid #ffffff;
+  box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.2);
+}
+
+.perfil-mascota .avatar-perfil img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.perfil-mascota .cambiar-foto {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 57%;
+  bottom: 0;
+  left: 0;
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(50%);
+  opacity: 0;
+  transition: all ease-in 200ms;
+}
+
+.perfil-mascota .cambiar-foto i {
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+}
+
+.perfil-mascota .avatar-perfil:hover .cambiar-foto {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.cambiar-foto {
+  cursor: pointer;
+}
+
+.perfil-mascota .datos-perfil {
+  text-align: center;
+  margin-top: 1rem;
+  color: #333;
+}
+
+.perfil-mascota .titulo-usuario {
+  font-size: 2.3rem;
+  white-space: nowrap;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.perfil-mascota .menu-perfil ul {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  margin-top: 2rem;
+  padding: 0;
+}
+
+.perfil-mascota .menu-perfil ul li {
+  margin-right: 1rem;
+}
+
+.perfil-mascota .menu-perfil a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 8px 20px;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: all ease-in 100ms;
+}
+
+.perfil-mascota .menu-perfil a:hover,
+.perfil-mascota .menu-perfil a.active {
+  background-color: #d03733;
+  color: #fff;
+}
+
+@media (max-width: 780px) {
+  .perfil-mascota .contenedor-perfil {
+    width: 100%;
+  }
+  .perfil-mascota .avatar-perfil {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .perfil-mascota .datos-perfil {
+    text-align: center;
+    padding: 15px;
+  }
+  .perfil-mascota .titulo-usuario {
+    font-size: 2.1rem;
+  }
+  .perfil-mascota .menu-perfil ul {
+    flex-direction: column;
+    width: 70%;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.1);
+  }
+}

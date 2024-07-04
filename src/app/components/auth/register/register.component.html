@@ -1,0 +1,38 @@
+<div class="main">
+  <section class="register">
+    <div class="titulo">
+      <img src="../../../assets/LOGO_PETWELLNES_R.png" alt="">
+      <h1>Crear Cuenta</h1>
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form">
+        <h2>Username</h2>
+        <div *ngIf="isInvalid('username')" class="error-message">
+          Debe haber un username
+        </div>
+        <input type="text" formControlName="username" placeholder="" [ngClass]="{'invalid': isInvalid('username')}">
+
+        <h2>Correo</h2>
+        <div *ngIf="isInvalid('email')" class="error-message">
+          Debes colocar un correo en formato válido
+        </div>
+        <input type="email" formControlName="email" placeholder="" [ngClass]="{'invalid': isInvalid('email')}">
+
+
+        <h2>Contraseña</h2>
+        <div *ngIf="isInvalid('password')" class="error-message">
+          Debes colocar una contraseña
+        </div>
+        <input type="password" formControlName="password" placeholder="" [ngClass]="{'invalid': isInvalid('password')}">
+
+        <h2>Confirmar Contraseña</h2>
+        <div *ngIf="isInvalid('confirmPassword')" class="error-message">
+          Las contraseñas no coinciden
+        </div>
+        <input type="password" formControlName="confirmPassword" placeholder=""
+          [ngClass]="{'invalid': isInvalid('confirmPassword')}">
+      </div>
+      <button class="crear" type="submit" [disabled]="registerForm.invalid">CREAR</button>
+    </form>
+  </section>
+</div>

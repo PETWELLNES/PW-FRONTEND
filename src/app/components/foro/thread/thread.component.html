@@ -1,0 +1,71 @@
+<div class="main">
+    <div class="broadcrumb">
+        <a [routerLink]="['']" class="broad">
+            <i class="fa-solid fa-house"></i>
+            <span>Inicio</span>
+        </a>
+        <a [routerLink]="['/foro']" class="broad">
+            <span> / Foro</span>
+        </a>
+        <a [routerLink]="['/perros']" class="broad">
+            <span> / Perros</span>
+        </a>
+        <span class="broadforo"> / {{ thread.title }}</span>
+    </div>
+
+    <section class="thread" *ngIf="thread">
+        <div class="hilo">
+            <div *ngIf="!editMode">
+                <h1 class="titulo">{{ thread.title }}</h1>
+                <p class="fecha-autor">
+                    el {{ thread.createdAt | date: 'shortDate' }} a las {{
+                    thread.createdAt | date: 'shortTime'
+                    }}
+                    por {{ thread.user?.username || 'Desconocido' }}
+                </p>
+                <div class="contenido" [innerHTML]="thread.content"></div>
+            </div>
+            <div class="iconos">
+                <i class="fa-solid fa-message" id="respuestas">
+                    <p>{{ responses.length }}</p>
+                </i>
+                <i class="fa-solid fa-heart" style="color: #d03733"></i>
+                <i *ngIf="isCreator" (click)="redirectToEdit()" id="editar" class="fa-solid fa-pen-to-square"
+                    style="color: #000000"></i>
+            </div>
+        </div>
+    </section>
+
+    <section class="respuestas">
+        <div *ngFor="let response of responses" class="respuesta">
+            <div *ngIf="editingResponseId !== response.id">
+                <div class="usuario">
+                    <h2>{{ response.user?.username }}</h2>
+                </div>
+                <div class="contenido" [innerHTML]="response.content"></div>
+                <div class="likes">
+                    <i class="fa-solid fa-heart" style="color: #d03733"></i>
+                    <p>{{ response.likes }}</p>
+                    <i class="fa-solid fa-reply" style="color: #000000"></i>
+                    <i *ngIf="response.user?.userId === currentUserId"
+                        (click)="startEditingResponse(response.id, response.content)" class="fa-solid fa-pen-to-square"
+                        style="color: #000000"></i>
+                </div>
+            </div>
+            <div *ngIf="editingResponseId === response.id">
+                <form [formGroup]="editResponseForm" (ngSubmit)="saveEditedResponse()">
+                    <textarea formControlName="content"></textarea>
+                    <button type="submit">Guardar</button>
+                    <button type="button" (click)="cancelEditingResponse()">Cancelar</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="responder">
+        <div id="editor-container"></div>
+        <div class="boton-responder">
+            <button (click)="submitResponse()">Responder</button>
+        </div>
+    </section>
+</div>

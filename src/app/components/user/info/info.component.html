@@ -1,0 +1,53 @@
+<div class="body">
+    <section class="info">
+        <div class="perfil-usuario-info">
+            <ul class="lista-datos">
+                <li>
+                    <div><i class="fa-solid fa-address-card" style="color: #000000;"></i> Nombres:</div>
+                    <div>
+                        <p>{{name}} {{lastname}}</p>
+                    </div>
+                </li>
+                <li>
+                    <div><i class="fa-solid fa-envelope" style="color: #000000;"></i> Correo: </div>
+                    <div>
+                        <p>{{email}}</p>
+                    </div>
+                </li>
+                <li>
+                    <div><i class="fa-solid fa-phone" style="color: #000000;"></i> Teléfono: </div>
+                    <div>
+                        <p>{{phonenumber}}</p>
+                    </div>
+                </li>
+                <li>
+                    <div><i class="fa-solid fa-briefcase" style="color: #000000;"></i> Trabajo: </div>
+                    <div>
+                        <p>{{work}}</p>
+                    </div>
+
+                </li>
+                <li>
+                    <div><i class="icono fas fa-calendar-alt"></i> Fecha nacimiento: </div>
+                    <div>
+                        <p>{{birthday}}</p>
+                    </div>
+                </li>
+                <li>
+                    <div><i class="fa-solid fa-flag" style="color: #000000;"></i> Pais: </div>
+                    <div>
+                        <p>{{country}}</p>
+                    </div>
+
+                </li>
+                <li>
+                    <div><i class="icono fas fa-user-check"></i> Registro:</div>
+                    <div>
+                        <p>{{registerdate}}</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <button [routerLink]="['/editInfo']">Editar Perfil</button>
+    </section>
+</div>

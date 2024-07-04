@@ -1,0 +1,64 @@
+.forocontent {
+  margin-top: 25px;
+}
+
+h2 {
+  display: grid;
+  justify-items: center;
+}
+
+.posts-list {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.post {
+  padding: 10px;
+  border-bottom: 1px solid #d03733;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+.post-title a {
+  color: black;
+}
+
+.post-title a:hover {
+  color: #d03733;
+}
+
+.post-info {
+  font-size: 14px;
+  color: #757575;
+}
+
+.postTitulo {
+  display: flex;
+}
+
+i#respuestas {
+  color: #d03733;
+  position: relative;
+  font-size: 30px;
+}
+
+i p {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  font-size: 20px;
+}
+
+i.fa-solid.fa-x{
+  cursor: pointer;
+}

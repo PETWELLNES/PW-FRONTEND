@@ -1,0 +1,13 @@
+<nav class="navbar">
+    <nav class="navlogo">
+        <img [routerLink]="['']" src="../../../assets/LOGO_PETWELLNES-removebg.png" class="logonav" alt="">
+    </nav>
+    <nav>
+        <ul class="nav-menu">
+            <li [routerLink]="['/foro']">FORO</li>
+            <li [routerLink]="['/nosotros']">QUIENES SOMOS</li>
+            <a (click)="toggleLoginPopup()"><i class="fa-solid fa-circle-user"></i></a>
+        </ul>
+    </nav>
+</nav>
+<app-login-popup *ngIf="isLoginPopupVisible"></app-login-popup>

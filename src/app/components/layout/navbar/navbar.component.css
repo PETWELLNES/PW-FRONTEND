@@ -1,0 +1,56 @@
+nav {
+  border-bottom: 7px solid #d03733;
+  height: 10vh;
+}
+
+.navbar {
+  display: grid;
+  grid-template-columns: 65% 35%;
+}
+
+.logonav {
+  width: 160px;
+  height: 90px;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+.nav-menu {
+  display: flex;
+  font-size: 25px;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.fa-circle-arrow-down {
+  color: black;
+}
+
+li {
+  color: black;
+  margin-inline: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+li:hover {
+  transform: scale(1.2);
+  background-color: #d03733;
+  border-radius: 20px;
+  color: white;
+  padding-inline: 10px;
+  transition: 0.3s;
+}
+
+i {
+  font-size: 35px;
+  color: black;
+  margin-right: 10px;
+  width: 100%;
+  cursor: pointer;
+}
+
+i:hover {
+  color: #d03733;
+}
