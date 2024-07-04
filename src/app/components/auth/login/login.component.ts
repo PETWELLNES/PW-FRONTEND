@@ -31,7 +31,7 @@ export class LoginComponent {
       if (this.isLoggedIn) {
         this.authService.getUser().subscribe((user) => {
           if (user && user.profileImageUrl) {
-            this.profileImageUrl = 'http://localhost:8080' + user.profileImageUrl;
+            this.profileImageUrl = 'https://petwellness.onrender.com' + user.profileImageUrl;
           }
           this.cdr.detectChanges();
         });
@@ -50,7 +50,7 @@ export class LoginComponent {
           console.log('Usuario conectado');
           this.authService.getUser().subscribe((user) => {
             if (user && user.profileImageUrl) {
-              this.profileImageUrl = 'http://localhost:8080' + user.profileImageUrl;
+              this.profileImageUrl = 'https://petwellness.onrender.com' + user.profileImageUrl;
             }
             this.cdr.detectChanges();
           });

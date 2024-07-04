@@ -123,7 +123,7 @@ export class PetComponent implements OnInit {
     formData.append('file', file);
     formData.append('petId', this.selectedPet.id.toString());
 
-    const uploadUrl = 'http://localhost:8080/api/v1/pets/upload-profile-image';
+    const uploadUrl = 'https://petwellness.onrender.com/api/v1/pets/upload-profile-image';
 
     const headers = new HttpHeaders({
       Authorization: `Bearer ${localStorage.getItem('token')}`,

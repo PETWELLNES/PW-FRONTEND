@@ -104,7 +104,7 @@ export class UserComponent implements OnInit {
     formData.append('file', file);
     formData.append('userId', this.user.userId);
 
-    const uploadUrl = 'http://localhost:8080/api/v1/user/upload-profile-image';
+    const uploadUrl = 'https://petwellness.onrender.com/api/v1/user/upload-profile-image';
 
     this.profileService.uploadFile(uploadUrl, formData).subscribe(
       (response: any) => {
@@ -135,7 +135,7 @@ export class UserComponent implements OnInit {
     formData.append('file', file);
     formData.append('userId', this.user.userId);
 
-    const uploadUrl = 'http://localhost:8080/api/v1/user/upload-banner-image';
+    const uploadUrl = 'https://petwellness.onrender.com/api/v1/user/upload-banner-image';
 
     this.profileService.uploadFile(uploadUrl, formData).subscribe(
       (response: any) => {
