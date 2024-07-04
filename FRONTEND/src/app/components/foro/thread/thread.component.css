@@ -69,6 +69,11 @@
   background-color: #fff;
 }
 
+.respuesta div{
+  display: flex;
+  align-items: center;
+}
+
 .likes {
   display: flex;
   align-items: center;
@@ -133,4 +138,8 @@ i#editar{
   margin-top: 5px;
   font-size: 25px;
   cursor: pointer;
+}
+
+.fa-solid.fa-heart, .fa-solid.fa-reply{
+  font-size: 35px;
 }

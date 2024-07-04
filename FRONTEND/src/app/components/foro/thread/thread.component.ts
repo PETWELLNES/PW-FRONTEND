@@ -6,6 +6,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { UsersService } from '../../../services/users.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
+import { ThreadService } from '../../../services/thread.service';
 
 @Component({
   selector: 'app-thread',
@@ -22,6 +23,9 @@ export class ThreadComponent implements AfterViewInit, OnInit {
   editForm: FormGroup;
   currentUserId: number | null = null;
   isCreator: boolean = false;
+  editor: any; // Editor de Quill
+  editingResponseId: number | null = null; // Para rastrear qué respuesta se está editando
+  editResponseForm: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,7 +34,8 @@ export class ThreadComponent implements AfterViewInit, OnInit {
     private authService: AuthService,
     private sanitizer: DomSanitizer,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private threadService: ThreadService // Asegúrate de inyectar ThreadService
   ) {
     this.editForm = this.fb.group({
       title: [''],
@@ -38,6 +43,10 @@ export class ThreadComponent implements AfterViewInit, OnInit {
       petType: [''],
       petBreed: [''],
       category: [''],
+    });
+
+    this.editResponseForm = this.fb.group({
+      content: [''],
     });
   }
 
@@ -47,7 +56,7 @@ export class ThreadComponent implements AfterViewInit, OnInit {
       this.currentUserId = user?.userId ? Number(user.userId) : null;
       if (this.postId) {
         this.loadThread();
-        this.loadResponses();
+        this.loadResponses(); // Llamada para cargar los comentarios
       }
     });
   }
@@ -97,7 +106,7 @@ export class ThreadComponent implements AfterViewInit, OnInit {
 
   loadResponses() {
     if (this.postId) {
-      this.postsService.getResponsesByParentPostId(this.postId).subscribe(
+      this.threadService.getResponsesByParentPostId(this.postId).subscribe(
         (data: any) => {
           this.responses = data.map((response: any) => ({
             ...response,
@@ -117,7 +126,7 @@ export class ThreadComponent implements AfterViewInit, OnInit {
 
   private async initializeQuill() {
     const Quill = (await import('quill')).default;
-    const editor = new Quill('#editor-container', {
+    this.editor = new Quill('#editor-container', {
       theme: 'snow',
       modules: {
         toolbar: [
@@ -138,6 +147,67 @@ export class ThreadComponent implements AfterViewInit, OnInit {
         ],
       },
     });
+  }
+
+  submitResponse() {
+    const content = this.editor.root.innerHTML.trim();
+    if (!content) {
+      alert('No se puede enviar un comentario vacío');
+      return;
+    }
+
+    const response = {
+      content,
+      postId: this.postId,
+      userId: this.currentUserId,
+    };
+
+    this.threadService.addResponse(response).subscribe(
+      (newResponse) => {
+        this.responses.push({
+          ...newResponse,
+          content: this.sanitizeContent(newResponse.content),
+        });
+        this.editor.root.innerHTML = ''; // Limpiar el editor después de enviar
+      },
+      (error) => {
+        console.error('Error adding response:', error);
+      }
+    );
+  }
+
+  startEditingResponse(responseId: number, currentContent: string) {
+    this.editingResponseId = responseId;
+    this.editResponseForm.patchValue({ content: currentContent });
+  }
+
+  saveEditedResponse() {
+    if (this.editResponseForm.valid && this.editingResponseId !== null) {
+      const updatedContent = this.editResponseForm.value.content;
+      this.threadService
+        .updateResponse(this.editingResponseId, { content: updatedContent })
+        .subscribe(
+          (updatedResponse) => {
+            const index = this.responses.findIndex(
+              (r) => r.id === this.editingResponseId
+            );
+            if (index !== -1) {
+              this.responses[index] = {
+                ...updatedResponse,
+                content: this.sanitizeContent(updatedResponse.content),
+              };
+            }
+            this.editingResponseId = null;
+          },
+          (error) => {
+            console.error('Error updating response:', error);
+          }
+        );
+    }
+  }
+
+  cancelEditingResponse() {
+    this.editingResponseId = null;
   }
 
   toggleEditMode() {

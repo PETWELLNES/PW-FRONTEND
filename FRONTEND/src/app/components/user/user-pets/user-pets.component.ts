@@ -31,8 +31,28 @@ export class UserPetsComponent implements OnInit {
     );
   }
 
+  confirmDeletePet(petId: string) {
+    const confirmDelete = window.confirm(
+      '¿Estás seguro de que quieres eliminar esta mascota?'
+    );
+    if (confirmDelete) {
+      this.deletePet(petId);
+    }
+  }
+
+  deletePet(petId: string) {
+    this.petService.deletePet(petId).subscribe(
+      () => {
+        this.pets = this.pets.filter((pet) => pet.id !== petId);
+      },
+      (error) => {
+        console.error('Error deleting pet:', error);
+      }
+    );
+  }
+
   selectPet(pet: Pet) {
     console.log('Selected Pet:', pet);
-    localStorage.setItem('selectedPetId', pet.id.toString());
+    localStorage.setItem('selectedPetId', pet.id);
   }
 }

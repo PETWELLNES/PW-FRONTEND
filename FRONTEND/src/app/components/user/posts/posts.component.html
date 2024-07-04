@@ -5,9 +5,6 @@
             <li class="post" *ngFor="let post of posts">
                 <div>
                     <div class="postTitulo">
-                        <i class="fa-solid fa-message" id="respuestas">
-                            <p>{{ post.responsesCount || 0 }}</p>
-                        </i>
                         <div class="post-title">
                             <a [routerLink]="['/thread', post.postId]">{{ post.title }}</a>
                         </div>
