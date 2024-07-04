@@ -1,0 +1,27 @@
+{
+  "routes": [
+    "/añadir-mascota",
+    "/aves",
+    "/cambiar-contraseña",
+    "/component",
+    "/editInfo",
+    "/forgot",
+    "/foro",
+    "/gatos",
+    "/login",
+    "/mascotas",
+    "/nosotros",
+    "/otros",
+    "/peces",
+    "/perfil",
+    "/perfil/info",
+    "/perfil/posts",
+    "/perfil/user-pets",
+    "/perros",
+    "/post",
+    "/recuperar-cuenta",
+    "/register",
+    "/reptiles",
+    "/roedores"
+  ]
+}
