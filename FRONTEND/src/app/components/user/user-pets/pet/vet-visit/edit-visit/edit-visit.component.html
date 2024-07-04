@@ -1,0 +1,18 @@
+<div class="edit-visit">
+    <h2>Editar Visita Veterinaria</h2>
+    <form [formGroup]="visitForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="date">Fecha:</label>
+            <input id="date" formControlName="date" type="date" />
+        </div>
+        <div>
+            <label for="reason">Razón:</label>
+            <input id="reason" formControlName="reason" type="text" />
+        </div>
+        <div>
+            <label for="notes">Notas:</label>
+            <textarea id="notes" formControlName="notes"></textarea>
+        </div>
+        <button type="submit" [disabled]="visitForm.invalid">Guardar</button>
+    </form>
+</div>

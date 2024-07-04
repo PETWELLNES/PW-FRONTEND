@@ -98,10 +98,12 @@ export class EditInfoComponent implements OnInit {
       this.userService.updateUserDetails(this.userId, updatedUser).subscribe(
         (response) => {
           console.log('User updated successfully', response);
-          this.router.navigate(['/perfil/info']);
-        },
+          this.router.navigate(['/perfil/info']).then(() => {
+            window.location.reload();
+          });
+        },  
         (error) => {
-          console.error('Error updating user', error);
+          console.error('Error updating user:', error);
         }
       );
     }

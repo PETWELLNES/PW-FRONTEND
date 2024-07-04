@@ -1,0 +1,16 @@
+<div class="user-pets">
+    <div *ngFor="let pet of pets" class="pet">
+        <div class="foto-mascota">
+            <img [src]="pet.profilePhoto ? 'data:image/jpeg;base64,' + pet.profilePhoto : '../../../../assets/default.jpg'"
+                alt="">
+        </div>
+        <h1 (click)="selectPet(pet)" [routerLink]="['/mascota', pet.id, 'pet-desc']">{{ pet.name }}</h1>
+        <h3>{{ pet.age }}</h3>
+        <h2>{{ pet.speciesName }}</h2>
+        <h2>{{ pet.breedName }}</h2>
+        <i class="fa-solid fa-x" style="color: #000000;"></i>
+    </div>
+    <div class="pet">
+        <i [routerLink]="['/añadir-mascota']" class="fa-solid fa-square-plus fa-bounce" style="color: #000000;"></i>
+    </div>
+</div>
