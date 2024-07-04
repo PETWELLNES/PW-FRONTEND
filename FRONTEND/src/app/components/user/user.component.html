@@ -22,11 +22,14 @@
           (change)="onBannerFileSelected($event)">
       </div>
     </div>
-
     <div class="menu-perfil">
       <ul>
-        <li><a [routerLink]="['/perfil/posts']" [class.active]="activeMenu === 'posts'"
-            (click)="setActiveMenu('posts')"><i class="icono-perfil fas fa-bullhorn"></i> Publicaciones</a></li>
+        <li><a [routerLink]="['/perfil']" [class.active]="activeMenu === 'desc'" (click)="setActiveMenu('desc')"><i
+              class="icono-perfil fas fa-info-circle"></i> Descripción</a></li>
+        <li><a [routerLink]="['/perfil/user-pets']" [class.active]="activeMenu === 'user-pets'"
+            (click)="setActiveMenu('user-pets')"><i class="icono-perfil fas fa-bullhorn"></i> Mascotas</a></li>
+            <li><a [routerLink]="['/perfil/posts']" [class.active]="activeMenu === 'posts'"
+                (click)="setActiveMenu('posts')"><i class="icono-perfil fas fa-bullhorn"></i> Publicaciones</a></li>
         <li><a [routerLink]="['/perfil/info']" [class.active]="activeMenu === 'info'" (click)="setActiveMenu('info')"><i
               class="icono-perfil fas fa-info-circle"></i> Información</a></li>
       </ul>

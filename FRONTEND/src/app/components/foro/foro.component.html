@@ -50,7 +50,7 @@
                 <li class="tipo">
                     <a [routerLink]="['/reptiles']">
                         <span class="icono rep"></span>
-                        <p>Réptiles</p>
+                        <p>Reptiles</p>
                     </a>
                 </li>
                 <li class="tipo">
@@ -62,17 +62,32 @@
             </ul>
         </div>
         <div class="foro">
-            <div class="cat">
-                <img src="../../../assets/dog.png" alt="">
-                <h1>Perro</h1>
-                <app-dropdown-menu></app-dropdown-menu>
-                <p>Ver todas las preguntas</p>
-            </div>
-            <div class="cat">
-                <img src="../../../assets/cat.png" alt="">
-                <h1>Gato</h1>
-                <app-dropdown-menu></app-dropdown-menu>
-                <p>Ver todas las preguntas</p>
+            <h2>Publicaciones Recientes</h2>
+            <div *ngFor="let type of petTypesOrder">
+                <div class="cat">
+                    <div class="tipo">
+                        <img [src]="'../../../assets/' + getIconName(type)" alt="">
+                        <h1>{{ type }}</h1>
+                    </div>
+                    <ul class="posts-list">
+                        <li class="post" *ngFor="let post of recentPostsGroupedByType[type]">
+                            <div class="postTitulo">
+                                <i class="fa-solid fa-message" id="respuestas">
+                                    <p>0</p>
+                                </i>
+                                <div class="post-title">
+                                    <a [routerLink]="['/thread', post.postId]">{{ post.title }}</a>
+                                </div>
+                            </div>
+                            <div class="post-info">
+                                <small>Creado el: {{ post.createdAt | date:'short' }}</small>
+                            </div>
+                        </li>
+                        <li *ngIf="recentPostsGroupedByType[type]?.length === 0">
+                            <p>No hay publicaciones recientes en esta categoría.</p>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

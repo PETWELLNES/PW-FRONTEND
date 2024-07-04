@@ -1,0 +1,28 @@
+.desc{
+    margin-top: 50px;
+    display: grid;
+    justify-items: center;
+}
+
+button{
+    width: 200px;
+    font-size: 1.25rem;
+    padding-block: 5px;
+    padding-inline: 15px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    background-color: #D03733;
+    margin-block: 20px;
+}
+
+button:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#editor-container{
+    height: 300px;
+}

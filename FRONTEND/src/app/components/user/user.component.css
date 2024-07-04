@@ -139,18 +139,6 @@
   margin-right: 0.75rem;
 }
 
-.perfil-usuario-info {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1.5rem 2rem;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
-  border-radius: 15px;
-  width: 100%;
-  font-size: 1.25rem;
-  margin-bottom: 50px;
-}
-
 .perfil-usuario-info li {
   padding-block: 0.5rem;
 }

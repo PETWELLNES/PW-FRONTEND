@@ -30,11 +30,32 @@
     <div class="forocontent">
         <div class="foro">
             <div class="cat">
-                <img src="../../../assets/dog.png" alt="">
+                <img class="iconoperro" src="../../../assets/dog.png" alt="">
                 <h1>Perros</h1>
-                <div class="drop">
-                    <app-dropdown-menu></app-dropdown-menu></div>
+                <select (change)="onBreedChange($event)">
+                    <option value="">Quitar filtro</option>
+                    <option *ngFor="let breed of breeds" [value]="breed.petBreedId">{{ breed.name }}</option>
+                </select>
             </div>
+            <div class="posts" *ngIf="posts.length > 0; else noPostsMessage">
+                <div class="foro" *ngFor="let post of posts">
+                    <div class="cat">
+                        <div class="usuario" *ngIf="post.user">
+                            <img [src]="post.user.profileImageUrl" alt="Perfil">
+                            <h2>{{ post.user.username }}</h2>
+                        </div>
+                        <div class="post-info">
+                            <h1 [routerLink]="['/thread', post.postId]">{{ post.title }}</h1>
+                            <div class="fecha-autor">
+                                <small>Creado el: {{ post.createdAt | date:'short' }}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ng-template #noPostsMessage>
+                <p>No hay posts disponibles para la raza seleccionada.</p>
+            </ng-template>
         </div>
     </div>
 </div>

@@ -1,0 +1,33 @@
+<div class="body">
+    <section class="info">
+        <div class="perfil-mascota-info">
+            <ul class="lista-datos">
+                <li>
+                    <div><i class="fa-solid fa-paw" style="color: #000000;"></i> Nombre:</div>
+                    <div>
+                        <p>{{selectedPet.name}}</p>
+                    </div>
+                </li>
+                <li>
+                    <div><i class="fa-solid fa-dog" style="color: #000000;"></i> Especie:</div>
+                    <div>
+                        <p>{{selectedPet.speciesName}}</p>
+                    </div>
+                </li>
+                <li>
+                    <div><i class="fa-solid fa-bone" style="color: #000000;"></i> Raza:</div>
+                    <div>
+                        <p>{{selectedPet.breedName}}</p>
+                    </div>
+                </li>
+                <li>
+                    <div><i class="fa-solid fa-cake-candles" style="color: #000000;"></i> Edad:</div>
+                    <div>
+                        <p>{{selectedPet.age}} años</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <button [routerLink]="['/editPetInfo', selectedPet.id]">Editar</button>
+    </section>
+</div>

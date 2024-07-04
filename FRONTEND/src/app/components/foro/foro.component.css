@@ -8,7 +8,7 @@
   transition: color 0.3s ease;
 }
 
-.broad{
+.broad {
   color: black;
 }
 
@@ -86,16 +86,16 @@
   font-weight: 600;
 }
 
-.tipo a:hover{
+.tipo a:hover {
   color: #ff544e;
 }
 
-.tipo a:hover>.icono{
+.tipo a:hover > .icono {
   background-color: #ff544e;
   border-color: #ff544e;
 }
 
-.tipo a:hover>.icono::before{
+.tipo a:hover > .icono::before {
   background-color: white;
 }
 
@@ -103,7 +103,7 @@
   position: relative;
   margin-bottom: 5px;
   padding-top: 90px;
-  width: 80%;
+  width: 90px;
   background-position: center;
   background-repeat: no-repeat;
   border: 2px solid #bbb4a7;
@@ -151,22 +151,51 @@
   mask-image: url(../../../assets/horse.png);
 }
 
-.cat{
-  display: grid;
-  grid-template-columns: 6% 5% 60% 20%;
-  align-items: center;
-  margin-left: 150px;
-  margin-block: 25px;
+.foro{
+  margin-inline: 200px;
 }
 
-.cat img{
-  height: 60px;
-  width: 60px;
-  margin-left: 50px;
+.foro .cat {
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+  background-color: #fff;
 }
 
-.cat h1{
-margin-left: 15px;
+.foro .cat img {
+  width: 50px;
+  height: 50px;
+}
+
+.posts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.post {
+  padding: 10px;
+  border-bottom: 1px solid #d03733;
+}
+
+.post-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+.post-title a{
+  color: black;
+}
+
+.post-title a:hover{
+  color: #d03733;
+}
+
+.post-info {
+  font-size: 14px;
+  color: #757575;
 }
 
 .razas {
@@ -184,11 +213,6 @@ margin-left: 15px;
   display: block;
 }
 
-.cat p{
-  cursor: pointer;
-  opacity: 50%;
-}
-
 .overlay {
   position: fixed;
   top: 0;
@@ -200,4 +224,46 @@ margin-left: 15px;
   justify-content: center;
   align-items: center;
   z-index: 4;
+}
+
+.foro .post {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.foro .post h2 {
+  margin-top: 0;
+}
+
+.foro .post small {
+  color: #888;
+}
+
+.tipo{
+  display: flex;
+  align-items: center;
+}
+
+h1{
+  margin-left: 15px;
+}
+
+.postTitulo{
+  display: flex;
+}
+
+
+i#respuestas{
+  color: #d03733;
+  position: relative;
+  font-size: 30px;
+}
+
+i p{
+  color: white;    
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  font-size: 20px;
 }

@@ -125,6 +125,10 @@ export class AuthService {
     return this.userSubject.asObservable();
   }
 
+  getCurrentUser(): User | null {
+    return this.userSubject.getValue();
+  }
+
   validateCurrentPassword(currentPassword: string): Observable<boolean> {
     return this.http
       .post<{ valid: boolean }>(`${this.apiUrl}/user/validate-password`, {
@@ -187,7 +191,10 @@ export class AuthService {
 
   updatePassword(token: string, password: string): Observable<void> {
     return this.http
-      .post<void>(`${this.apiUrl}/password/update`, { token, newPassword: password })
+      .post<void>(`${this.apiUrl}/password/update`, {
+        token,
+        newPassword: password,
+      })
       .pipe(
         tap(() => console.log('Contraseña actualizada con éxito')),
         catchError((error) => {

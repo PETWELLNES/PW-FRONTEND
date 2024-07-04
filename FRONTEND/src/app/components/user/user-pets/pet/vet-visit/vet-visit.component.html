@@ -1,0 +1,21 @@
+<div class="vet-visit">
+    <section class="lista">
+        <div class="opciones">
+            <i class="fa-solid fa-square-plus" style="color: #000000;" (click)="navigateToAddVisit()"></i>
+        </div>
+        <div class="historia" *ngFor="let visit of visits">
+            <details>
+                <summary>
+                    <h1>{{ visit.reason }}</h1>
+                    <div class="info-options">
+                        <p>{{ visit.date }}</p>
+                        <i class="fa-solid fa-pen-to-square" style="color: #000000;"
+                            (click)="navigateToEditVisit(visit.id)"></i>
+                        <i class="fa-solid fa-x" style="color: #000000;" (click)="deleteVisit(visit.id)"></i>
+                    </div>
+                </summary>
+                <span>{{ visit.notes }}</span>
+            </details>
+        </div>
+    </section>
+</div>

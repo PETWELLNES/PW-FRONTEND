@@ -1,0 +1,11 @@
+<div class="desc">
+    <div *ngIf="!editorActive">
+        <p *ngIf="!post.content">No hay ninguna descripción registrada.</p>
+        <div *ngIf="post.content" [innerHTML]="post.content"></div>
+    </div>
+    <div *ngIf="editorActive">
+        <div id="editor-container"></div>
+        <button (click)="saveDescription()">Guardar</button>
+    </div>
+    <button (click)="toggleEditor()">{{ editorActive ? 'Cancelar' : 'Editar' }}</button>
+</div>

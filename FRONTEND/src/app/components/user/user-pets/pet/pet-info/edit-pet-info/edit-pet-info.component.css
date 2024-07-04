@@ -1,0 +1,44 @@
+.add-pet {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.add-pet h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.add-pet form div {
+  margin-bottom: 15px;
+}
+
+.add-pet label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.add-pet input,
+.add-pet select,
+.add-pet button {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add-pet button {
+  font-size: 20px;
+  background-color: #d03733;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.add-pet button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

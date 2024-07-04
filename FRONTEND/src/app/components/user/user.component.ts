@@ -15,7 +15,7 @@ import { ImageCropperComponent } from 'ngx-image-cropper';
 })
 export class UserComponent implements OnInit {
   username: string = '';
-  activeMenu: string = '';
+  activeMenu: string = 'desc';
   user: User = getDefaultUser();
   @ViewChild('fileInput') fileInput!: ElementRef;
   @ViewChild('bannerFileInput') bannerFileInput!: ElementRef;
@@ -33,11 +33,10 @@ export class UserComponent implements OnInit {
 
     this.authService.getUser().subscribe((user) => {
       this.user = user || getDefaultUser();
-      console.log('User loaded:', this.user);
     });
 
     if (this.isBrowser()) {
-      this.activeMenu = this.getActiveMenuFromUrl(window.location.pathname);
+      this.activeMenu = this.getActiveMenuFromUrl(window.location.pathname) || 'desc';
     }
   }
 
@@ -55,8 +54,12 @@ export class UserComponent implements OnInit {
       return 'posts';
     } else if (currentUrl.includes('info')) {
       return 'info';
+    } else if (currentUrl.includes('user-pets')) {
+      return 'user-pets';
+    } else if (currentUrl.includes('desc')) {
+      return 'desc';
     }
-    return '';
+    return 'desc';
   }
 
   triggerFileInput() {
@@ -97,8 +100,6 @@ export class UserComponent implements OnInit {
       return;
     }
 
-    console.log('User ID:', this.user.userId);
-
     const formData = new FormData();
     formData.append('file', file);
     formData.append('userId', this.user.userId);
@@ -130,8 +131,6 @@ export class UserComponent implements OnInit {
       return;
     }
 
-    console.log('User ID:', this.user.userId);
-
     const formData = new FormData();
     formData.append('file', file);
     formData.append('userId', this.user.userId);
@@ -143,7 +142,6 @@ export class UserComponent implements OnInit {
         if (response && response.imageUrl) {
           if (this.user) {
             this.user.bannerUrl = response.imageUrl;
-            console.log('Banner URL updated:', this.user.bannerUrl);
           }
         }
       },

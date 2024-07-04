@@ -1,0 +1,49 @@
+.add-visit {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.add-visit h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.add-visit form div {
+  margin-bottom: 15px;
+}
+
+.add-visit label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.add-visit input,
+.add-visit select,
+.add-visit textarea,
+.add-visit button {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add-visit textarea {
+  resize: vertical;
+}
+
+.add-visit button {
+  font-size: 20px;
+  background-color: #d03733;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.add-visit button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
