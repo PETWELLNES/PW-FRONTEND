@@ -49,7 +49,7 @@ export class PetService {
     const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
     return this.http.delete<void>(`${this.apiUrl}/${petId}`, { headers });
   }
-
+  
   updatePet(petId: number, formData: FormData): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/${petId}`, formData, {
       headers: {
